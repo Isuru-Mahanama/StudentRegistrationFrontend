@@ -1,3 +1,5 @@
+
+
 .section-with-background {
     background-image: url('/assets/universityatnight.jpg');
     background-size: cover;
@@ -16,6 +18,7 @@
     display: flex;
     padding-top: 3cm;
     background: #000;
+  
 }
 
 .left-column,
@@ -37,3 +40,28 @@
     
     
 }
+p{
+    flex: 1;
+    color: white;
+    font-size: smaller;
+    margin-left: 3cm;
+    text-align: justify;
+    margin-right: 3cm;
+    margin-bottom: 1.5cm;
+    
+}
+h1{
+    flex: 1;
+    color: white;
+    font-size: 40px; 
+}
+.about{
+    margin-left: 15cm;
+    margin-top: 3cm;
+    margin-bottom: 1cm;
+}
+.contact{
+    margin-left: 5cm;
+    margin-right: 5cm;
+}
+

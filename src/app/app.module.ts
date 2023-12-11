@@ -8,6 +8,9 @@ import { PersonalDetailsFormComponent } from './Forms/personal-details-form/pers
 import { DashboardComponent } from './core/components/dashboard/dashboard.component';
 import { LoginFormComponent } from './Forms/login-form/login-form.component';
 import { AdminSignUpComponent } from './Forms/admin-sign-up/admin-sign-up.component';
+import { AdminLoginComponent } from './Forms/admin-login/admin-login.component';
+import { LangingPageComponent } from './Forms/landing-page/langing-page.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { AdminSignUpComponent } from './Forms/admin-sign-up/admin-sign-up.compon
     PersonalDetailsFormComponent,
     DashboardComponent,
     LoginFormComponent,
-    AdminSignUpComponent
+    AdminSignUpComponent,
+    AdminLoginComponent,
+    LangingPageComponent,
+    
   ],
   imports: [
     BrowserModule,

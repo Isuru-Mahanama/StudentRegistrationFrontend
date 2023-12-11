@@ -3,3 +3,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import 'tailwindcss/variants';
+
+body{
+    font-family: 'Nunito', sans-serif;
+}

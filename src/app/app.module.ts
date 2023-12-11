@@ -10,6 +10,8 @@ import { LoginFormComponent } from './Forms/login-form/login-form.component';
 import { AdminSignUpComponent } from './Forms/admin-sign-up/admin-sign-up.component';
 import { AdminLoginComponent } from './Forms/admin-login/admin-login.component';
 import { LangingPageComponent } from './Forms/landing-page/langing-page.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { LangingPageComponent } from './Forms/landing-page/langing-page.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 
-<form  class="bg-black">
+<form  class="bg-black" #form ="ngForm" (ngSubmit)="onFormSubmit()">
     <div class="space-y-12 boarder">
       <div class="p1">
         <h2 class="profile text-white">Profile</h2>
@@ -11,7 +11,7 @@
             <div class="mt-2">
               <div class="  border-0 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">workcation.com/</span>
-                <input type="text" name="username" id="username" autocomplete="username" class="inputUserName" placeholder="janesmith" >
+                <input type="text" name="username" id="username" autocomplete="username" class="inputUserName" placeholder="janesmith"  >
               </div>
             </div>
           </div>
@@ -34,14 +34,14 @@
           <div class="sm:col-span-3">
             <label for="first-name" class="block text-sm font-medium leading-6 text-white">First name</label>
             <div class="mt-2">
-              <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="firstName">
+              <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="firstName" [(ngModel)]="model.firstName">
             </div>
           </div>
   
           <div class="sm:col-span-3">
             <label for="last-name" class="block text-sm font-medium leading-6 text-white">Last name</label>
             <div class="mt-2">
-              <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="familyName">
+              <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="familyName" [(ngModel)]="model.lastName">
             </div>
           </div>
   

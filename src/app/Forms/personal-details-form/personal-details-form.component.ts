@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AddPersonalDetailsRequest } from '../../Category/models/add-personaldetails';
+import { PersaonalDetailsService } from '../../Category/Services/persaonal-details.service';
 
 @Component({
   selector: 'app-personal-details-form',
@@ -7,4 +9,30 @@ import { Component } from '@angular/core';
 })
 export class PersonalDetailsFormComponent {
 
+  model : AddPersonalDetailsRequest;
+  constructor( private personalDetailsService : PersaonalDetailsService ){
+    this.model = {
+   
+    firstName: '',
+    lastName: '',
+    phoneNumber: 0,
+    gender: '',
+    academicProgramme: '',
+    birthday: new Date(),
+    enrolledDate: new Date()
+      
+    };
+  }
+  onFormSubmit(){
+    console.log(this.model)
+    this.personalDetailsService.addPersonalDetails(this.model)
+    .subscribe({
+      next : (response) =>{
+        console.log("This was successfull");
+      },
+      error: (error) =>{
+        console.log(error);
+      }
+    })
+  }
 }

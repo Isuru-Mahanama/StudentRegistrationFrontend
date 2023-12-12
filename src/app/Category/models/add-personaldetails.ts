@@ -7,4 +7,7 @@ export interface AddPersonalDetailsRequest{
     academicProgramme: string;
     birthday: Date;
     enrolledDate: Date;
+    no: string;
+    street :string; 
+    district:string 
 }

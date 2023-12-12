@@ -19,7 +19,10 @@ export class PersonalDetailsFormComponent {
     gender: '',
     academicProgramme: '',
     birthday: new Date(),
-    enrolledDate: new Date()
+    enrolledDate: new Date(),
+    no: '',
+    street :'', 
+    district:'' 
       
     };
   }

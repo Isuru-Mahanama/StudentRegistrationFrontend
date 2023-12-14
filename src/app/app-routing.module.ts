@@ -6,16 +6,11 @@ import { LoginFormComponent } from './Forms/login-form/login-form.component';
 import { AdminSignUpComponent } from './Forms/admin-sign-up/admin-sign-up.component';
 import { AdminLoginComponent } from './Forms/admin-login/admin-login.component';
 import { LangingPageComponent } from './Forms/landing-page/langing-page.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
 
 const routes: Routes = [
-  {
-    path :'admin/dashboard',
-    component : DashboardComponent
-  },
-  {
-    path:'admin/personalDetails',
-    component : PersonalDetailsFormComponent
-  },
+
+ 
   {
     path:'login',
     component:LoginFormComponent
@@ -28,9 +23,36 @@ const routes: Routes = [
     path:'admin/login',
     component:AdminLoginComponent
   },
+ 
   {
-    path:'landingPage',
-    component:LangingPageComponent
+    path:'',
+    redirectTo :'login',
+    pathMatch: 'full'
+  },
+  {
+    path:'',
+    component: NavbarComponent,
+    children:[
+      {
+          path :'admin/dashboard',
+          component : DashboardComponent
+        
+      },
+      {
+          path:'landingPage',
+          component:LangingPageComponent
+        
+      },
+      {
+        path:'admin/personalDetails',
+        component : PersonalDetailsFormComponent
+      }
+    ]
+  },
+  {
+      path:'**',
+      component:LangingPageComponent
+    
   }
 ]; 
 

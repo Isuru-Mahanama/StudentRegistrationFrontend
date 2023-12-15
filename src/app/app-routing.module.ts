@@ -16,37 +16,29 @@ const routes: Routes = [
     component:LoginFormComponent
   },
   {
-    path:'admin/signup',
-    component:AdminSignUpComponent
-  },
-  {
-    path:'admin/login',
-    component:AdminLoginComponent
-  },
- 
-  {
     path:'',
     redirectTo :'login',
     pathMatch: 'full'
   },
   {
+    path:'dashboard',
+    component:DashboardComponent
+  },
+  {
+    path:'admin/personalDetails',
+    component : PersonalDetailsFormComponent
+  },
+  {
     path:'',
     component: NavbarComponent,
     children:[
-      {
-          path :'admin/dashboard',
-          component : DashboardComponent
-        
-      },
+     
       {
           path:'landingPage',
           component:LangingPageComponent
         
-      },
-      {
-        path:'admin/personalDetails',
-        component : PersonalDetailsFormComponent
       }
+    
     ]
   },
   {

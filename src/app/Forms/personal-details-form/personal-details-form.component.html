@@ -32,6 +32,13 @@
               <input type="text" name="gender" id="city" autocomplete="address-level2" class="city" [(ngModel)]="model.gender">
             </div>
           </div>
+
+          <div class="sm:col-span-2 sm:col-start-1">
+            <label for="city" class="block text-sm font-medium leading-6 text-white">Email</label>
+            <div class="mt-2">
+              <input type="text" name="email" id="email" autocomplete="address-level2" class="email" [(ngModel)]="model.email">
+            </div>
+          </div>
   
           <div class="sm:col-span-2 sm:col-start-1">
             <label for="city" class="block text-sm font-medium leading-6 text-white">Phone Number</label>
@@ -50,7 +57,7 @@
           <div class="sm:col-span-2 sm:col-start-1">
             <label for="city" class="block text-sm font-medium leading-6 text-white">Birthday</label>
             <div class="mt-2">
-              <input type="text" name="birthday" id="birthday" autocomplete="address-level2" class="city" [(ngModel)]="model.birthday">
+              <input type="date" (change)="setDob()" name="birthday" id="birthday" autocomplete="address-level2" class="city" [(ngModel)]="model.birthday">
             </div>
           </div>
            
@@ -58,7 +65,7 @@
           <div class="sm:col-span-2 sm:col-start-1">
             <label for="city" class="block text-sm font-medium leading-6 text-white">Enrolled Date</label>
             <div class="mt-2">
-              <input type="text" name="enrolledDate" id="enrolledDate" autocomplete="address-level2" class="city" [(ngModel)]="model.enrolledDate">
+              <input type="date" name="enrolledDate" id="enrolledDate" autocomplete="address-level2" class="city" [(ngModel)]="model.enrolledDate">
             </div>
           </div>
 

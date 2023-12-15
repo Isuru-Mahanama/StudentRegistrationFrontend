@@ -9,5 +9,6 @@ export interface AddPersonalDetailsRequest{
     enrolledDate: Date;
     no: string;
     street :string; 
-    district:string 
+    district:string;
+    email:string;
 }

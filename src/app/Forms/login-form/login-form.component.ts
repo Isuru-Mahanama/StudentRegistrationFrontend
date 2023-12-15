@@ -4,11 +4,17 @@ import { LoginServiceService } from '../../Category/Services/login-service.servi
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+import { AppComponent } from '../../app.component';
+
+
+
+//const helper =  new JwtHelperService();
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css'
 })
+
 export class LoginFormComponent {
 
   model : LoginDetailsRequest;
@@ -18,6 +24,8 @@ export class LoginFormComponent {
     passwordHash:''
     };
   }
+
+
   onFormSubmit(){
     
     console.log(this.model)
@@ -27,8 +35,17 @@ export class LoginFormComponent {
       
         console.log(response)
         console.log("This was successfull");
-        localStorage.setItem('LoginToken',response.token)
-        this.router.navigateByUrl('admin/dashboard');
+       
+        localStorage.setItem('LoginToken',response);
+        
+       if(this.loginServiceService.isLoggedIn){
+        this.router.navigate(['dashboard']);
+       }
+
+       if(!this.loginServiceService.isLoggedIn){
+        console.log("Login again. token expired")
+       }
+       
       },
       error: (error) =>{
         

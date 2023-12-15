@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AddPersonalDetailsRequest } from '../../Category/models/add-personaldetails';
 import { PersaonalDetailsService } from '../../Category/Services/persaonal-details.service';
-
+import { LoginServiceService } from '../../Category/Services/login-service.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-personal-details-form',
   templateUrl: './personal-details-form.component.html',
@@ -10,7 +11,7 @@ import { PersaonalDetailsService } from '../../Category/Services/persaonal-detai
 export class PersonalDetailsFormComponent {
 
   model : AddPersonalDetailsRequest;
-  constructor( private personalDetailsService : PersaonalDetailsService ){
+  constructor( private personalDetailsService : PersaonalDetailsService, private loggedInUser : LoginServiceService , private router:Router){
     this.model = {
    
     firstName: '',
@@ -22,13 +23,19 @@ export class PersonalDetailsFormComponent {
     enrolledDate: new Date(),
     no: '',
     street :'', 
-    district:'' 
+    district:'',
+    email:''
       
     };
   }
+
+
   onFormSubmit(){
     console.log(this.model)
-    this.personalDetailsService.addPersonalDetails(this.model)
+    if(this.loggedInUser.isLoggedIn){
+      this.personalDetailsService.addPersonalDetails(this.model)
+    
+  
     .subscribe({
       next : (response) =>{
         console.log("This was successfull");
@@ -37,5 +44,12 @@ export class PersonalDetailsFormComponent {
         console.log(error);
       }
     })
+  }
+  if(!this.loggedInUser.isLoggedIn){
+    this.router.navigate(['login']);
+  }
+  }
+  setDob(){
+   
   }
 }

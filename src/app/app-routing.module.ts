@@ -7,6 +7,9 @@ import { AdminSignUpComponent } from './Forms/admin-sign-up/admin-sign-up.compon
 import { AdminLoginComponent } from './Forms/admin-login/admin-login.component';
 import { LangingPageComponent } from './Forms/landing-page/langing-page.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { GettingStuEmailComponent } from './Forms/getting-stu-email/getting-stu-email.component';
+
+
 
 const routes: Routes = [
 
@@ -29,22 +32,12 @@ const routes: Routes = [
     component : PersonalDetailsFormComponent
   },
   {
-    path:'',
-    component: NavbarComponent,
-    children:[
-     
-      {
-          path:'landingPage',
-          component:LangingPageComponent
-        
-      }
-    
-    ]
+    path:'admin/gettingstudentdetails',
+    component : GettingStuEmailComponent
   },
   {
       path:'**',
       component:LangingPageComponent
-    
   }
 ]; 
 

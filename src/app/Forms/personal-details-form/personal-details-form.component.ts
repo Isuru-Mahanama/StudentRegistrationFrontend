@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AddPersonalDetailsRequest } from '../../Category/models/add-personaldetails';
 import { PersaonalDetailsService } from '../../Category/Services/persaonal-details.service';
 import { LoginServiceService } from '../../Category/Services/login-service.service';
@@ -26,19 +26,21 @@ export class PersonalDetailsFormComponent {
     district:'',
     email:''
       
-    };
+    }
   }
 
 
   onFormSubmit(){
-    console.log(this.model)
+    console.log("Student passing details"+this.model)
     if(this.loggedInUser.isLoggedIn){
       this.personalDetailsService.addPersonalDetails(this.model)
     
   
     .subscribe({
       next : (response) =>{
-        console.log("This was successfull");
+        console.log("Student passing details"+this.model)
+        this.personalDetailsService.viewStudentEmail
+        this.router.navigate(['admin/gettingstudentdetails']);
       },
       error: (error) =>{
         console.log(error);
@@ -49,7 +51,5 @@ export class PersonalDetailsFormComponent {
     this.router.navigate(['login']);
   }
   }
-  setDob(){
-   
-  }
+
 }

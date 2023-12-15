@@ -12,6 +12,8 @@ import { AdminLoginComponent } from './Forms/admin-login/admin-login.component';
 import { LangingPageComponent } from './Forms/landing-page/langing-page.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { GettingStuEmailComponent } from './Forms/getting-stu-email/getting-stu-email.component';
+
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     AdminSignUpComponent,
     AdminLoginComponent,
     LangingPageComponent,
+    GettingStuEmailComponent,
+    
     
   ],
   imports: [

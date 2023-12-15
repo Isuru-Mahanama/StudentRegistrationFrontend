@@ -39,7 +39,7 @@ export class PersonalDetailsFormComponent {
     .subscribe({
       next : (response) =>{
         console.log("Student passing details"+this.model)
-        this.personalDetailsService.viewStudentEmail
+      
         this.router.navigate(['admin/gettingstudentdetails']);
       },
       error: (error) =>{

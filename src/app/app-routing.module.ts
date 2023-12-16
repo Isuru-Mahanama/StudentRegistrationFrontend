@@ -8,7 +8,8 @@ import { AdminLoginComponent } from './Forms/admin-login/admin-login.component';
 import { LangingPageComponent } from './Forms/landing-page/langing-page.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { GettingStuEmailComponent } from './Forms/getting-stu-email/getting-stu-email.component';
-
+import { CourseRegistrationComponent } from './Forms/Course-registration/course-registration.component';
+import { ScedulingComponent } from './Forms/sceduling/sceduling.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,11 @@ const routes: Routes = [
   {
     path:'login',
     component:LoginFormComponent
+  },
+
+  {
+    path:'admin/courseRegistration',
+    component : CourseRegistrationComponent
   },
   {
     path:'',
@@ -34,6 +40,11 @@ const routes: Routes = [
   {
     path:'admin/gettingstudentdetails',
     component : GettingStuEmailComponent
+  },
+ 
+  {
+    path:'admin/scheduling',
+    component: ScedulingComponent
   },
   {
       path:'**',

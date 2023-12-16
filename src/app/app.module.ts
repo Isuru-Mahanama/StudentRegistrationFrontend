@@ -13,6 +13,8 @@ import { LangingPageComponent } from './Forms/landing-page/langing-page.componen
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GettingStuEmailComponent } from './Forms/getting-stu-email/getting-stu-email.component';
+import { CourseRegistrationComponent } from './Forms/Course-registration/course-registration.component';
+import { ScedulingComponent } from './Forms/sceduling/sceduling.component';
 
 
 
@@ -27,6 +29,8 @@ import { GettingStuEmailComponent } from './Forms/getting-stu-email/getting-stu-
     AdminLoginComponent,
     LangingPageComponent,
     GettingStuEmailComponent,
+    CourseRegistrationComponent,
+    ScedulingComponent,
     
     
   ],

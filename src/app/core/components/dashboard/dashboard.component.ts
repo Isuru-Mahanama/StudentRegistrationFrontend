@@ -15,12 +15,39 @@ export class DashboardComponent {
 
  
   NaviagateToPersonalDetails(){
+    debugger
     if(this.logedInServices.isLoggedIn){
-    this.router.navigate(['admin/personalDetails']);
+   debugger; this.router.navigate(['admin/personalDetails']);
     }
-    if(!this.logedInServices.isLoggedIn){
-      this.router.navigate(['login']);
+  debugger;  if(!this.logedInServices.isLoggedIn){
+    debugger;  this.router.navigate(['login']);
     }
   }
     
+
+  NaviagateToCourseRegistration(){
+    debugger
+    console.log("right befor registration navigation")
+     if(this.logedInServices.isLoggedIn){
+      debugger
+    this.router.navigate(['admin/courseRegistration']);
+   debugger; console.log("after registration navigation")
+    }
+   debugger; if(!this.logedInServices.isLoggedIn){
+   debugger;   console.log("before login naviagation")
+   debugger;   this.router.navigate(['login']);
+    }
+  }
+
+  
+
+    
+  NaviagateToScheduling(){
+    if(this.logedInServices.isLoggedIn){
+   this.router.navigate(['admin/scheduling']);
+   }
+   if(!this.logedInServices.isLoggedIn){
+     this.router.navigate(['login']);
+   }
+ }
 }

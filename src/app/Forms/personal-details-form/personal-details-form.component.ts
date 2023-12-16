@@ -16,7 +16,7 @@ export class PersonalDetailsFormComponent {
    
     firstName: '',
     lastName: '',
-    phoneNumber: 0,
+    phoneNumber: NaN ,
     gender: '',
     academicProgramme: '',
     birthday: new Date(),

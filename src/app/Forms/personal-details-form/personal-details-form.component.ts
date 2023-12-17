@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AddPersonalDetailsRequest } from '../../Category/models/add-personaldetails';
 import { PersaonalDetailsService } from '../../Category/Services/persaonal-details.service';
 import { LoginServiceService } from '../../Category/Services/login-service.service';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 @Component({
   selector: 'app-personal-details-form',
   templateUrl: './personal-details-form.component.html',
@@ -33,14 +33,18 @@ export class PersonalDetailsFormComponent {
   onFormSubmit(){
     console.log("Student passing details"+this.model)
     if(this.loggedInUser.isLoggedIn){
-      this.personalDetailsService.addPersonalDetails(this.model)
-    
-  
+     this.personalDetailsService.addPersonalDetails(this.model)
     .subscribe({
       next : (response) =>{
-        console.log("Student passing details"+this.model)
+        const formattedResponse = JSON.stringify(response, null, 2);
+        
+        console.log("Student passing details"+ formattedResponse)
       
-        this.router.navigate(['admin/gettingstudentdetails']);
+        // Create a navigation extras object to pass data
+    
+        this.router.navigate(['admin/gettingstudentdetails'], {
+          state: { data: response }
+        });
       },
       error: (error) =>{
         console.log(error);

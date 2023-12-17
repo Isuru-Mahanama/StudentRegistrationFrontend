@@ -3,9 +3,13 @@ import { LoginDetailsRequest } from '../../Category/models/login';
 import { LoginServiceService } from '../../Category/Services/login-service.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { AppComponent } from '../../app.component';
+import { jwtDecode } from 'jwt-decode';
 
+
+
+const jwtHelper =  new JwtHelperService();
 
 
 //const helper =  new JwtHelperService();
@@ -22,6 +26,7 @@ export class LoginFormComponent {
     this.model = {
     email:'',
     passwordHash:''
+    
     };
   }
 
@@ -34,12 +39,26 @@ export class LoginFormComponent {
       next : (response : any) =>{
       
         console.log(response)
+        console.log("json response"+JSON.stringify(response));
         console.log("This was successfull");
-       
+        console.log(jwtDecode(response));
+      //  const decodedToken = jwtDecode(response)
+        //const role = decodedToken as unknown as string;
+        //console.log(role)
+        // Decode the token to get the user type
+     //   const decodedHeader = jwtDecode(response, { header: true });
+       // const role = decodedToken  as JwtPayload['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+      
+        //
+       // console.log(decodedHeader);
+      
         localStorage.setItem('LoginToken',response);
         
+     
        if(this.loginServiceService.isLoggedIn){
-        this.router.navigate(['dashboard']);
+       
+          this.router.navigate(['userDashboard']);
+      
        }
 
        if(!this.loginServiceService.isLoggedIn){

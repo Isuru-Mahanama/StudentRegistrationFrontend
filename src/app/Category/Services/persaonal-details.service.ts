@@ -10,11 +10,13 @@ export class PersaonalDetailsService {
 
   constructor(private http: HttpClient) { }
 
-  addPersonalDetails(model:AddPersonalDetailsRequest):Observable<void>{
-    return this.http.post<void>('https://localhost:7061/api/Students', model)
+  addPersonalDetails(model:AddPersonalDetailsRequest):Observable<any>{
+    return this.http.post<any>('https://localhost:7061/api/Students', model)
   }
   
-  viewStudentEmail(model: StudentDetailsRequest):Observable<StudentDetailsRequest>{
-    return this.http.get<StudentDetailsRequest>('https://localhost:7061/api/viewStudentEmail');
+  viewStudentEmail(): Observable<StudentDetailsRequest> {
+    return this.http.get<StudentDetailsRequest>('https://localhost:7061/api/Students/GetStudentDetails');
   }
+
+ 
 }

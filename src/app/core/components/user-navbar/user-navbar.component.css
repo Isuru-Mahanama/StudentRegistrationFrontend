@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/variants';
+
+@layer components {
+    .mobile-button {
+        @apply relative 
+        inline-flex items-center 
+        justify-center rounded-md
+        p-2 text-gray-400
+        hover:bg-gray-700
+        hover:text-white
+        focus:outline-none
+        focus:ring-2 
+        focus:ring-inset
+        focus:ring-white;
+    }
+
+    .boader{
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.0rem 25%;
+        border-bottom: 1px solid rgb(66, 65, 65);
+        position: fixed;
+        top: 0; left: 0; right: 0;
+      
+    }
+
+    .navbutton {
+        @apply 
+        text-white 
+        rounded-md 
+        px-3 py-2 
+        text-sm font-medium;
+        
+    }
+    
+    .navbutton:hover {
+        /* Add a small gap between text and underline on hover */
+        position: relative;
+        border-bottom: 1px solid white;
+        padding-bottom: 1px;
+    }
+    
+
+    .navLightgrey-button{
+        @apply block 
+        px-4 py-2 
+        text-sm 
+        text-gray-700 
+    }
+
+    .navhover-button{
+        @apply text-gray-300
+        hover:bg-gray-700
+        hover:text-white block 
+        rounded-md px-3 py-2 
+        text-base font-medium
+    }
+    .backgroundSidebar{
+        @apply absolute
+        right-0 z-10 mt-2 
+        w-48 origin-top-right 
+        rounded-md bg-white 
+        py-1 shadow-lg 
+        ring-1 ring-black 
+        ring-opacity-5 
+        focus:outline-none
+    }
+    .nav-div{
+        @apply flex 
+        flex-1 items-center 
+        justify-center 
+        sm:items-stretch 
+        sm:justify-start
+    }
+    .nav-hoever-bg{
+        @apply bg-gray-900
+        text-white 
+        rounded-md px-3 
+        py-2 text-sm font-medium
+    }
+    .nav-button{
+        @apply relative rounded-full 
+        bg-gray-800 p-1 
+        text-gray-400 
+        hover:text-white 
+        focus:outline-none 
+        focus:ring-2 
+        focus:ring-white 
+        focus:ring-offset-2 
+        focus:ring-offset-gray-800
+    }
+    .profile-dropdown{
+        @apply relative 
+        flex rounded-full 
+        bg-gray-800 text-sm 
+        focus:outline-none 
+        focus:ring-2 
+        focus:ring-white 
+        focus:ring-offset-2 
+        focus:ring-offset-gray-800
+    }
+    .nav1{
+        @apply absolute 
+        inset-y-0 right-0 
+        flex items-center 
+        pr-2 sm:static 
+        sm:inset-auto sm:ml-6 
+        sm:pr-0
+    }
+    nav {
+        position: relative;
+        z-index: 100000;
+        transform: translate3d(0, 0, 0);
+    }
+    
+}

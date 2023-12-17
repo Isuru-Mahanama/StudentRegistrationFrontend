@@ -12,4 +12,5 @@ export interface StudentDetailsRequest{
     district:string;
     email:string;
     password:string;
+    studentID:string;
 }

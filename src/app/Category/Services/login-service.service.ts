@@ -22,4 +22,29 @@ export class LoginServiceService {
     const token = localStorage.getItem('LoginToken');
     return !helper.isTokenExpired(token);
   }
+
+  getLoggedInUser(): string {
+    try {
+        const loginToken = localStorage.getItem('LoginToken');
+
+        // Check if loginToken is null or undefined
+        if (loginToken === null || loginToken === undefined) {
+            return ''; // or handle accordingly
+        }
+
+        // Parse the JSON string
+        const parsedToken = JSON.parse(loginToken);
+        console.log(parsedToken.token);
+        // Check if the token property exists
+        if (parsedToken && typeof parsedToken.token === 'string') {
+            return parsedToken.token;
+        } else {
+            return ''; // or handle accordingly
+        }
+    } catch (error) {
+        console.error('Error parsing JSON from LoginToken:', error);
+        return ''; // or handle accordingly
+    }
+}
+
 }

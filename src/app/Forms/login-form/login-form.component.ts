@@ -39,10 +39,10 @@ export class LoginFormComponent {
       next : (response : any) =>{
       
         console.log(response)
-        console.log("json response"+JSON.stringify(response));
+        console.log(JSON.parse(response).userType);
         console.log("This was successfull");
         console.log(jwtDecode(response));
-      //  const decodedToken = jwtDecode(response)
+        const decodedToken = jwtDecode(response)
         //const role = decodedToken as unknown as string;
         //console.log(role)
         // Decode the token to get the user type
@@ -56,9 +56,12 @@ export class LoginFormComponent {
         
      
        if(this.loginServiceService.isLoggedIn){
-       
-          this.router.navigate(['userDashboard']);
-      
+        if(JSON.parse(response).userType !== undefined && JSON.parse(response).userType === 1){
+          this.router.navigate(['dashboard']);
+        }
+        else{
+         this.router.navigate(['userDashboard']);
+          }
        }
 
        if(!this.loginServiceService.isLoggedIn){

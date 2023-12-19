@@ -5,6 +5,8 @@ import { CourseDetailsRequest } from '../../Category/models/corseDetails';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CourseDetailsServicesService } from '../../Category/Services/course-details-services.service';
+import { LoginServiceService } from '../../Category/Services/login-service.service';
+import { ScheduleServicesService } from '../../Category/Services/schedule-services.service';
 
 @Component({
   selector: 'app-sceduling',
@@ -13,7 +15,7 @@ import { CourseDetailsServicesService } from '../../Category/Services/course-det
 })
 export class ScedulingComponent {
   model:schedulingRequest;
-  constructor(private httpClient :HttpClient,  private routers :Router, private courseDetailsService: CourseDetailsServicesService){
+  constructor(private httpClient :HttpClient,  private routers :Router, private courseDetailsService: CourseDetailsServicesService,private loggedInuser: LoginServiceService,private scheduleServices: ScheduleServicesService){
     this.model = {
       courseCode:'',
       startTime:'',
@@ -33,7 +35,23 @@ export class ScedulingComponent {
   }
 
   onFormSubmit(){
-   // this.courseDetailsService.addCourses(this.model)
+    if(this.loggedInuser.isLoggedIn){
+     this.scheduleServices.addScheduleDetails(this.model)
+    .subscribe({
+      next : (response) =>{
+    
+        this.routers.navigate(['viewAllScedules'], {
+          state: { data: response }
+        });
+      },
+      error: (error) =>{
+        console.log(error);
+      }
+    })
+  }
+  if(!this.loggedInuser.isLoggedIn){
+    this.routers.navigate(['login']);
+  }
   }
 
   ngOnInit(){

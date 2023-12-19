@@ -40,7 +40,7 @@ export class ScedulingComponent {
     .subscribe({
       next : (response) =>{
     
-        this.routers.navigate(['viewAllScedules'], {
+        this.routers.navigate(['viewAllSchedule'], {
           state: { data: response }
         });
       },

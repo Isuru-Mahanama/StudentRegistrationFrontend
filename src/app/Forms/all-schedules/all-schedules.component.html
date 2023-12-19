@@ -1,1 +1,55 @@
-<p>all-schedules works!</p>
+<div class="bg-black p-4">
+  
+    <div class="py-3"></div>
+    <h1 class="text-white py-4">All Schedules</h1>
+    <table class=" text-sm bg-black table-auto w-full border-collapse border border-slate-700 rounded-lg shadow-md">
+        <thead>
+            <tr class="text-left text-white bg-slate-900">
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Course Code</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Day</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Start Time</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">End Time</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Modify</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Delete</span>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of model" class="text-white border-b border-white hover:bg-white">
+                <td class="px-2 py-2">{{ item.courseCode }}</td>
+                <td class="px-2 py-2">{{ item.day }}</td>
+                <td class="px-2 py-2">{{item.startTime}}</td>
+                <td class="px-2 py-2">{{ item.endTime }}</td>
+                <td class="px-2 py-2">
+                    <a href="admin/login" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Update</a>
+                </td>
+                <td class="px-2 py-2">                    
+                    <a href="admin/login" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

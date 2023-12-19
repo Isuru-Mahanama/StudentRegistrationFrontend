@@ -5,7 +5,7 @@ export interface StudentDetailsRequest{
     phoneNumber: number;
     gender: string;
     academicProgramme: string;
-    birthday: Date;
+    birthday: string;
     enrolledDate: Date;
     no: string;
     street :string; 

@@ -1,0 +1,71 @@
+<div class="bg-black p-4">
+    <div class="py-3"></div>
+    <table class=" text-sm bg-black table-auto w-full border-collapse border border-slate-700 rounded-lg shadow-md">
+        <thead>
+            <tr class="text-left text-white bg-slate-900">
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Code</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Name</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Level</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Semester</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Category</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Start Date</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">End Date</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Modify</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Delete</span>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of model" class="text-white border-b border-white hover:bg-white">
+                <td class="px-2 py-2">{{ item.courseCode }}</td>
+                <td class="px-2 py-2">{{ item.courseName }}</td>
+                <td class="px-2 py-2">{{item.level }}</td>
+                <td class="px-2 py-2">{{ item.semester }}</td>
+                <td class="px-2 py-2">{{ item.category }}</td>
+                <td class="px-2 py-2">{{ item.startDate.split('T')[0] }}</td>
+                <td class="px-2 py-2">{{ item.endDate.split('T')[0] }}</td>
+                <td class="px-2 py-2">
+                    <a href="admin/login" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Update</a>
+                </td>
+                <td class="px-2 py-2">                    
+                    <a href="admin/login" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

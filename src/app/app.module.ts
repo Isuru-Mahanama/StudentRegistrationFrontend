@@ -16,7 +16,9 @@ import { ScedulingComponent } from './Forms/sceduling/sceduling.component';
 import { UserDashboardComponent } from './core/components/user-dashboard/user-dashboard.component';
 import { UserNavbarComponent } from './core/components/user-navbar/user-navbar.component';
 import { MyProfileComponent } from './Forms/my-profile/my-profile.component';
-
+import { AllStudentsComponent } from './Forms/all-students/all-students.component';
+import { AllSchedulesComponent } from './Forms/all-schedules/all-schedules.component';
+import { AllCoursesComponent } from './Forms/all-courses/all-courses.component';
 
 
 
@@ -34,8 +36,10 @@ import { MyProfileComponent } from './Forms/my-profile/my-profile.component';
     ScedulingComponent,
     UserDashboardComponent,
     UserNavbarComponent,
-    MyProfileComponent
-    
+    MyProfileComponent,
+    AllStudentsComponent,
+    AllSchedulesComponent,
+    AllCoursesComponent
     
   ],
   imports: [

@@ -11,6 +11,9 @@ import { CourseRegistrationComponent } from './Forms/Course-registration/course-
 import { ScedulingComponent } from './Forms/sceduling/sceduling.component';
 import { UserDashboardComponent } from './core/components/user-dashboard/user-dashboard.component';
 import { MyProfileComponent } from './Forms/my-profile/my-profile.component';
+import { AllSchedulesComponent } from './Forms/all-schedules/all-schedules.component';
+import { AllStudentsComponent } from './Forms/all-students/all-students.component';
+import { AllCoursesComponent } from './Forms/all-courses/all-courses.component';
 
 
 const routes: Routes = [
@@ -54,6 +57,18 @@ const routes: Routes = [
   {
     path:'myProfile',
     component: MyProfileComponent
+  },
+  {
+    path:'viewAllSchedule',
+    component: AllSchedulesComponent
+  },
+  {
+    path:'viewAllStudents',
+    component: AllStudentsComponent
+  },
+  {
+    path:'viewAllCourses',
+    component: AllCoursesComponent
   },
   {
       path:'**',

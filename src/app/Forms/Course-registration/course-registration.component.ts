@@ -21,8 +21,8 @@ export class CourseRegistrationComponent {
       semester:NaN,
       level:NaN,
       category:'',
-      startDate: new Date(),
-      endDate : new Date()
+      startDate: '',
+      endDate : ''
     }
   }
   onFormSubmit(){

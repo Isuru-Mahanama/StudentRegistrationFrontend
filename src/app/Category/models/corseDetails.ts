@@ -5,6 +5,6 @@ export interface CourseDetailsRequest{
     semester:number;
     level:number;
     category:string;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string;
 }

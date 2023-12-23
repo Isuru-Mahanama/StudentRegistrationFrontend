@@ -31,12 +31,12 @@
             <div class="flex space-x-4 boader">
               <img style="width: 60px; height: 60px;" src="/assets/LogoStudentRegistration.jpg" alt="YourCompany">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> 
-              <a class="navbutton" aria-current="page">Dashboard</a>
-              <a href="#" class="navbutton">About</a>
-              <a href="#" class="navbutton">Course Registration</a>
-              <a href="#" class="navbutton">Scheduling</a>
-              <a routerLink="/login" class="navbutton">Login</a>
-             
+              <button  class="navbutton" (click)="NaviagateToDashboard()"  >Dashboard</button>
+              <button class="navbutton" (click)="NaviagateToAbout()">About</button>
+              <button class="navbutton"(click)="NaviagateToCourseRegistration()">Course Registration</button>
+              <button class="navbutton" (click)="NaviagateToScedulin()">Scheduling</button>
+              <button  *ngIf="logedInServices.loginNumber === 1" type="submit"  class="navbutton" (click)="NaviagateToLogOut()">Logout</button>
+              <button  *ngIf="logedInServices.loginNumber === 0" type="submit"  class="navbutton" (click)="NaviagateToLogin()">Login</button>
             </div>
           </div>
         </div>

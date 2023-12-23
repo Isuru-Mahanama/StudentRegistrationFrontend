@@ -3,7 +3,7 @@ import { schedulingRequest } from '../../Category/models/scheduling';
 import { Observable, map } from 'rxjs';
 import { CourseDetailsRequest } from '../../Category/models/corseDetails';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseDetailsServicesService } from '../../Category/Services/course-details-services.service';
 import { LoginServiceService } from '../../Category/Services/login-service.service';
 import { ScheduleServicesService } from '../../Category/Services/schedule-services.service';
@@ -15,8 +15,11 @@ import { ScheduleServicesService } from '../../Category/Services/schedule-servic
 })
 export class ScedulingComponent {
   model:schedulingRequest;
-  constructor(private httpClient :HttpClient,  private routers :Router, private courseDetailsService: CourseDetailsServicesService,private loggedInuser: LoginServiceService,private scheduleServices: ScheduleServicesService){
+  someIntVariable: number = 0;
+
+  constructor(private httpClient :HttpClient,  private routers :Router, private courseDetailsService: CourseDetailsServicesService,private loggedInuser: LoginServiceService,private scheduleServices: ScheduleServicesService,private acitvateRouter :ActivatedRoute){
     this.model = {
+      scheduleID:NaN,
       courseCode:'',
       startTime:'',
       endTime:'',
@@ -56,8 +59,55 @@ export class ScedulingComponent {
 
   ngOnInit(){
     this.courseData = this.viewCourseCodes();
-    console.log("COurse Codes",this.courseCodes)
+    console.log("COurse Codes",this.courseCodes);
+
+     // Retrieve the courseCode parameter from the URL
+     this.acitvateRouter.params.subscribe((params: { [x: string]: any; }) => {
+      const scheduleID = params['scheduleID'];
+      if (scheduleID) {
+        // Do something with the courseCode, e.g., assign it to your model
+        this.model.scheduleID = scheduleID;
+        console.log("ScheduleID"+scheduleID)
+        this.getSchedule(scheduleID);
+        console.log("HI")
+      }
+    });
+  }  
+  //
+  getSchedule(scheduleID: string) {
+    const apiUrl = `https://localhost:7061/api/Schedule/admin/getScheduleByID?scheduleID=${scheduleID}`;
+  
+    this.httpClient.get(apiUrl).subscribe(
+      (response) => {
+        // Handle the API response here
+        
+        this.someIntVariable = 1;
+        console.log('API Response:', response);
+        
+        this.model = { ...this.model, ...response };
+
+        // Optionally, log the updated model for debugging
+        console.log('Updated Model:', this.model);
+        console.log(this.model.courseCode)
+      },
+      (error) => {
+        // Handle errors here
+        console.error('API Error:', error);
+      }
+    );
   }
+  // 
+   getSchedules(scheduleID:string): Observable<schedulingRequest[]> {
+
+    return this.httpClient.get<schedulingRequest[]>('https://localhost:7061/api/Schedule/admin/getScheduleByID?scheduleID=${scheduleID}').pipe(
+     map(data => {
+       console.log("THose are the courseDetails")
+       console.log(data); // This should log the data after the HTTP request is complete
+       return data; // Return the data part
+     })
+   );
+ }
+  // 
   viewCourseCodes(): Observable<string[]> {
      return this.httpClient.get<string[]>('https://localhost:7061/api/Course/GetAllCourseCodes').pipe(
       map(data => {

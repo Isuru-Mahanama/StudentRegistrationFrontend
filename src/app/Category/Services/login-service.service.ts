@@ -10,6 +10,7 @@ const helper =  new JwtHelperService();
 })
 export class LoginServiceService {
 
+  loginNumber : number = 1
   constructor(private http: HttpClient) { }
 
   addLoginDetails(model:LoginDetailsRequest):Observable<any>{

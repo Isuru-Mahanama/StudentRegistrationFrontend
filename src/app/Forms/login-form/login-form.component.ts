@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AppComponent } from '../../app.component';
 import { jwtDecode } from 'jwt-decode';
+import { EmailValidator } from '@angular/forms';
 
 
 
@@ -20,9 +21,13 @@ const jwtHelper =  new JwtHelperService();
 })
 
 export class LoginFormComponent {
-
+  
   model : LoginDetailsRequest;
-  constructor( private loginServiceService : LoginServiceService, private router:Router, private httpClient :HttpClient ){
+  constructor( 
+        private loginServiceService : LoginServiceService, 
+        private router:Router, 
+        private httpClient :HttpClient
+      ) {
     this.model = {
     email:'',
     passwordHash:''
@@ -30,30 +35,20 @@ export class LoginFormComponent {
     };
   }
 
-
+   validateEmail(email : string) {
+    // Regular expression for a valid email address ending with "example.com"
+    const emailRegex = /^[a-zA-Z0-9._-]+@example\.com$/;
+  
+    return emailRegex.test(email);
+  }
   onFormSubmit(){
-    
-    console.log(this.model)
-    this.loginServiceService.addLoginDetails(this.model)
-    .subscribe({      
+      this.loginServiceService.addLoginDetails(this.model)
+      .subscribe({      
       next : (response : any) =>{
-      
-        console.log(response)
         console.log(JSON.parse(response).userType);
         console.log("This was successfull");
-        console.log(jwtDecode(response));
-        const decodedToken = jwtDecode(response)
-        //const role = decodedToken as unknown as string;
-        //console.log(role)
-        // Decode the token to get the user type
-     //   const decodedHeader = jwtDecode(response, { header: true });
-       // const role = decodedToken  as JwtPayload['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-      
-        //
-       // console.log(decodedHeader);
-      
         localStorage.setItem('LoginToken',response);
-        
+        this.loginServiceService.loginNumber =1;
      
        if(this.loginServiceService.isLoggedIn){
         if(JSON.parse(response).userType !== undefined && JSON.parse(response).userType === 1){
@@ -74,6 +69,9 @@ export class LoginFormComponent {
         console.log(error);
       }
     })
+    
+    
+    
   }
  
      

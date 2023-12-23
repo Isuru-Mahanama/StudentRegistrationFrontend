@@ -1,98 +1,279 @@
 
-<form  class="bg-black" #form ="ngForm" (ngSubmit)="onFormSubmit()">
-    <div class="space-y-12 boarder">
-      <div class="p1">
-        <h2 class="profile text-white">Profile</h2>
-        <p class="mt-1 text-sm leading-6 text-gray-500">This information will be displayed publicly so be careful what you share.</p>
-
+<form  class="bg-black" 
+       #form ="ngForm" 
+       (ngSubmit)="onFormSubmit()">
+    <div class=" boarder flex">
+      <div class="p1 mt-10  ">
+        <h2 class="profile text-white justify-center flex">Profile</h2>
+        <p class=" text-sm leading-6 text-gray-500 ">This information will be displayed publicly so be careful what you share.</p>
       </div>
-  
-      <div class="border-b border-gray-900/10 pb-12">
-        <h2 class="text-base font-semibold leading-7 text-white">Personal Information</h2>
-        <p class="mt-1 text-sm leading-6 text-gray-500">Use a permanent address where you can receive mail.</p>
-  
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-          <div class="sm:col-span-3">
-            <label for="first-name" class="block text-sm font-medium leading-6 text-white">First name</label>
-            <div class="mt-2">
-              <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="firstName" [(ngModel)]="model.firstName">
+      <div class="border-b border-gray-900/10 pb-1 mt-10 ">
+        <div class=" grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 " >
+          <div class="sm:col-span-2">
+            <label for="first-name" 
+                   class="block text-sm font-medium leading-6 text-white">First name
+            </label>
+            <div class="mt-2 form-group">
+              <input type="text" 
+                     #firstName ="ngModel"
+                     name="first-name" 
+                     id="first-name" 
+                     autocomplete="given-name" 
+                     [class.is-invalid] = "firstName.invalid && firstName.touched"
+                     class="firstName" 
+                     [(ngModel)]="model.firstName"
+                     pattern="^[A-Z]{2,}"                   
+                     required>
+            <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+              <small style="color: red" 
+                     class="text-danger" 
+                     *ngIf="firstName.errors?.['required']">First name is required!
+              </small> 
+              <small style="color: red" 
+                      class="text-danger" 
+                      *ngIf="firstName.errors?.['pattern']">Firs name should be in capital letters!
+              </small> 
             </div>
-          </div>
-  
-          <div class="sm:col-span-3">
-            <label for="last-name" class="block text-sm font-medium leading-6 text-white">Last name</label>
-            <div class="mt-2">
-              <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="familyName" [(ngModel)]="model.lastName">
-            </div>
-          </div>
-  
-            <div class="sm:col-span-2 sm:col-start-1">
-            <label for="city" class="block text-sm font-medium leading-6 text-white">Gender</label>
-            <div class="mt-2">
-              <input type="text" name="gender" id="city" autocomplete="address-level2" class="city" [(ngModel)]="model.gender">
-            </div>
-          </div>
-
-  
-          <div class="sm:col-span-2 sm:col-start-1">
-            <label for="city" class="block text-sm font-medium leading-6 text-white">Phone Number</label>
-            <div class="mt-2">
-              <input type="number" name="phoneNumber" id="city" autocomplete="address-level2" class="city" [(ngModel)]="model.phoneNumber">
-            </div>
-          </div>
-
-          <div class="sm:col-span-2 sm:col-start-1">
-            <label for="city" class="block text-sm font-medium leading-6 text-white">Academic Programme</label>
-            <div class="mt-2">
-              <input type="text" name="academicProgramme" id="academicprogramme" autocomplete="address-level2" class="city" [(ngModel)]="model.academicProgramme">
-            </div>
-          </div>
-
-          <div class="sm:col-span-2 sm:col-start-1">
-            <label for="city" class="block text-sm font-medium leading-6 text-white">Birthday</label>
-            <div class="mt-2">
-              <input type="date"  name="birthday" id="birthday" autocomplete="address-level2" class="city" [(ngModel)]="model.birthday">
-            </div>
-          </div>
-           
-
-          <div class="sm:col-span-2 sm:col-start-1">
-            <label for="city" class="block text-sm font-medium leading-6 text-white">Enrolled Date</label>
-            <div class="mt-2">
-              <input type="date" name="enrolledDate" id="enrolledDate" autocomplete="address-level2" class="city" [(ngModel)]="model.enrolledDate">
-            </div>
-          </div>
-
-       
-
-          <div class="sm:col-span-2 sm:col-start-1">
-            <label for="city" class="block text-sm font-medium leading-6 text-white">No</label>
-            <div class="mt-2">
-              <input type="text" name="no" id="no" autocomplete="address-level2" class="city" [(ngModel)]="model.no">
             </div>
           </div>
   
           <div class="sm:col-span-2">
-            <label for="region" class="block text-sm font-medium leading-6 text-white">Street</label>
+            <label for="last-name" 
+                   class="block text-sm font-medium leading-6 text-white">Last name
+            </label>
+            <div class="mt-2 form-group">
+              <input type="text"
+                     #LastName = "ngModel" 
+                     name="last-name" 
+                     id="last-name" 
+                     autocomplete="family-name" 
+                     class="familyName" 
+                     [(ngModel)]="model.lastName"
+                     [class.is-invalid] = "LastName.invalid && LastName.touched"
+                     required
+                     pattern="^[A-Z]{3,}">
+            <div *ngIf="firstName.errors && (LastName.dirty || LastName.touched)">
+                <small style="color: red" 
+                       class="text-danger" 
+                       *ngIf="LastName.errors?.['required']">Last name name is required!
+                </small> 
+                <small style="color: red" 
+                       class="text-danger" 
+                       *ngIf="LastName.errors?.['pattern']">Last name should be in capital and more than three letters!
+                </small> 
+            </div>
+            </div>
+          </div>
+            <div class="sm:col-span-2 ">
+            <label for="city" 
+                   class="block text-sm font-medium leading-6 text-white">Gender
+            </label>
             <div class="mt-2">
-              <input type="text" name="street" id="street" autocomplete="address-level1" class="region" [(ngModel)]="model.street">
+              <select #gender="ngModel"
+                     type="text" 
+                     name="gender" 
+                     id="city" 
+                     autocomplete="address-level2" 
+                     class="city" 
+                     [(ngModel)]="model.gender"
+                     [class.is-invalid] ="gender.invalid && gender.touched" 
+                    [(ngModel)]="model.gender"
+                    required>
+                <option value="F">Female</option>
+                <option value="M">Male</option>
+              </select>
+              <small class="text-danger" 
+                   [class.d-none]="gender.dirty || gender.untouched">Please select the Gender!
+            </small>
+            </div>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="city" 
+                   class="block text-sm font-medium leading-6 text-white">Birthday
+            </label>
+            <div class="mt-2">
+              <input type="date"  
+                     name="birthday" 
+                     id="birthday" 
+                     autocomplete="address-level2" 
+                     class="city" 
+                     [(ngModel)]="model.birthday"
+                     #birthDate="ngModel"
+                     [class.is-invalid] = "birthDate.invalid && birthDate.touched"
+                     required>
+               <small style="color: red" class="text-danger"   [class.d-none]="birthDate.untouched || birthDate.valid">Birth Date is required!</small> 
+            </div>
+          </div>
+
+  
+          <div class="sm:col-span-2 ">
+            <label for="city" 
+                   class="block text-sm font-medium leading-6 text-white">Phone Number
+            </label>
+            <div class="mt-2">
+              <input type="number" 
+                     name="phoneNumber" 
+                     id="city" 
+                     autocomplete="address-level2" 
+                     class="city" 
+                     [(ngModel)]="model.phoneNumber"
+                     #phoneNumber="ngModel"
+                     [class.is-invalid] = "phoneNumber.invalid && phoneNumber.touched"
+                     required
+                     pattern="^\d{9}$">
+            <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)">
+                <small style="color: red" 
+                       class="text-danger" 
+                       *ngIf="phoneNumber.errors?.['required']">Phone number is required!
+                </small> 
+                <small style="color: red" 
+                       class="text-danger" 
+                       *ngIf="phoneNumber.errors?.['pattern']">Phone number should be  10 digits!
+                </small> 
+                  </div>
+            </div>
+          </div>
+
+          <div class="sm:col-span-1 sm:col-start-1 ">
+            <label for="city" 
+                   class="block text-sm font-medium leading-6 text-white">Address no
+            </label>
+            <div class="mt-2">
+              <input type="text"
+                    #addressNo="ngModel"
+                    name="no" 
+                    id="no" 
+                    autocomplete="address-level2" 
+                    class="city" 
+                    [(ngModel)]="model.no"  
+                    [class.is-invalid] = "addressNo.invalid && addressNo.touched"
+                    required
+                    pattern="^[a-zA-Z]{3,}" >
+          <div *ngIf="addressNo.errors && (addressNo.dirty || addressNo.touched)">
+              <small style="color: red" 
+                     class="text-danger" 
+                     *ngIf="addressNo.errors?.['required']">Address is required!
+              </small> 
+              <small style="color: red" 
+                     class="text-danger" 
+                     *ngIf="addressNo.errors?.['pattern']">Address should be  more than three letters!
+              </small> 
+          </div>
             </div>
           </div>
   
           <div class="sm:col-span-2">
-            <label for="postal-code" class="block text-sm font-medium leading-6 text-white">District</label>
-            <div class="mt-2">
-              <input type="text" name="district" id="district" autocomplete="postal-code" class="postalCode" [(ngModel)]="model.district">
+            <label for="region" 
+                   class="block text-sm font-medium leading-6 text-white">Street
+            </label>
+            <div class="mt-2 form-group">
+              <input type="text" 
+                     name="street" 
+                     id="street" 
+                     autocomplete="address-level1" 
+                     class="region" 
+                     [(ngModel)]="model.street"
+                     #street="ngModel"
+                     [class.is-invalid] = "street.invalid && street.touched"
+                     required
+                     pattern="^[a-zA-Z]{3,}" >
+            <div *ngIf="street.errors && (street.dirty || street.touched)">
+              <small style="color: red" 
+                      class="text-danger" 
+                      *ngIf="street.errors?.['required']">Street is required!
+              </small> 
+              <small style="color: red" 
+                      class="text-danger" 
+                      *ngIf="street.errors?.['pattern']">Street should be  more than three letters!
+              </small> 
+            </div>
             </div>
           </div>
+          <div class="sm:col-span-2">
+            <label for="postal-code" 
+                   class="block text-sm font-medium leading-6 text-white">District
+            </label>
+            <div class="mt-2">
+              <input type="text" 
+                     name="district" 
+                     id="district" 
+                     autocomplete="postal-code" 
+                     class="postalCode" 
+                     [(ngModel)]="model.district"
+                     #distict="ngModel"
+                     [class.is-invalid] = "distict.invalid && distict.touched"
+                     required
+                     pattern="^[a-zA-Z]{3,}" >
+            <div *ngIf="distict.errors && (distict.dirty || distict.touched)">
+                <small style="color: red" 
+                       class="text-danger" 
+                       *ngIf="distict.errors?.['required']">District is required!
+                </small> 
+                <small style="color: red" 
+                       class="text-danger" 
+                       *ngIf="distict.errors?.['pattern']">District should be  more than three letters!
+                </small> 
+            </div>
+            </div>
+          </div>
+          <div class="sm:col-span-2 sm:col-start-1">
+            <label for="city" 
+                   class="block text-sm font-medium leading-6 text-white">Academic Programme
+            </label>
+            <div class="mt-2">
+              <input type="text" 
+                     name="academicProgramme" 
+                     id="academicprogramme" 
+                     autocomplete="address-level2" 
+                     class="city" 
+                     [(ngModel)]="model.academicProgramme"
+                     #academicProgramme="ngModel"
+                     [class.is-invalid] = "academicProgramme.invalid && academicProgramme.touched"
+                     required
+                     pattern="^[A-Z]{3,}" >
+            <div *ngIf="academicProgramme.errors && (academicProgramme.dirty || academicProgramme.touched)">
+                <small style="color: red" 
+                       class="text-danger" 
+                       *ngIf="academicProgramme.errors?.['required']">Academic programme is required!
+                </small> 
+                <small style="color: red" 
+                       class="text-danger" 
+                       *ngIf="academicProgramme.errors?.['pattern']">Academic programme should be in captal and  more than three letters!
+                </small> 
+            </div>
+            </div>
+          </div>
+          
+          <div class="sm:col-span-2">
+            <label for="city" 
+                   class="block text-sm font-medium leading-6 text-white">Enrolled Date
+            </label>
+            <div class="mt-2">
+              <input type="date" 
+                     name="enrolledDate" 
+                     id="enrolledDate" 
+                     autocomplete="address-level2" 
+                     class="city" [(ngModel)]="model.enrolledDate"
+                     #enrollDate="ngModel"
+                     [class.is-invalid] = "enrollDate.invalid && enrollDate.touched"
+                     required>
+            <small style="color: red" class="text-danger"   [class.d-none]="enrollDate.untouched || enrollDate.valid">Enrolled Date is required!</small> 
+            </div>
+          </div>
+     
         </div>
       </div>
   
     </div>
   
-    <div class="mt-6 flex items-center justify-end gap-x-6">
-      <button type="button" class="text-sm font-semibold leading-6 text-white">Cancel</button>
-      <button type="submit" class="buttonSave">Save</button>
+    <div class="mt-6 pb-4 flex items-center justify-center gap-x-6">
+      <button type="button" 
+              class="text-sm font-semibold leading-6 text-white">Cancel
+      </button>
+      <button type="submit" 
+              class="buttonSave"
+              [disabled]="form.form.invalid">Save
+      </button>
     </div>
   </form>
   

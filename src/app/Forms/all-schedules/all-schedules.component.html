@@ -1,7 +1,10 @@
 <div class="bg-black p-4">
   
-    <div class="py-3"></div>
-    <h1 class="text-white py-4">All Schedules</h1>
+    <div class="py-3 mt-6 flex items-center  gap-x-6">
+        <h1 class="text-white py-4 items-center justify-start">Schedule Registration Details ______</h1>
+       
+    <button type="submit" class="buttonSave justify-end" (click)="NavigateToDahsboard()">GO TO DASHBOARD</button>
+</div>
     <table class=" text-sm bg-black table-auto w-full border-collapse border border-slate-700 rounded-lg shadow-md">
         <thead>
             <tr class="text-left text-white bg-slate-900">
@@ -38,16 +41,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of model" class="text-white border-b border-white hover:bg-white">
+            <tr *ngFor="let item of model" class="text-white border-b border-white hover:bg-white hcolor">
                 <td class="px-2 py-2">{{ item.courseCode }}</td>
                 <td class="px-2 py-2">{{ item.day }}</td>
                 <td class="px-2 py-2">{{item.startTime}}</td>
                 <td class="px-2 py-2">{{ item.endTime }}</td>
                 <td class="px-2 py-2">
-                    <a href="admin/login" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Update</a>
+                    <button href="admin/login" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500" (click)="NavigateToUpdate(item.scheduleID)" >Update</button>
                 </td>
                 <td class="px-2 py-2">                    
-                    <a href="admin/login" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Delete</a>
+                    <button href="admin/login" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Delete</button>
                 </td>
             </tr>
         </tbody>

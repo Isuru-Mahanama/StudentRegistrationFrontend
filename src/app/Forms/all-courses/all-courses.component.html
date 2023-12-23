@@ -1,6 +1,9 @@
 <div class="bg-black p-4">
-    <div class="py-3"></div>
-    <h1 class="text-white py-4">All Courses</h1>
+    <div class="py-3 mt-6 flex items-center  gap-x-6">
+        <h1 class="text-white py-4 items-center justify-start">Course Registration Details ______</h1>
+       
+    <button type="submit" class="buttonSave justify-end" (click)="NavigateToDahsboard()">GO TO DASHBOARD</button>
+</div>
     <table class=" text-sm bg-black table-auto w-full border-collapse border border-slate-700 rounded-lg shadow-md">
         <thead>
             <tr class="text-left text-white bg-slate-900">
@@ -52,7 +55,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of model" class="text-white border-b border-white hover:bg-white">
+            <tr *ngFor="let item of model" class="text-white border-b border-white hover:bg-white hcolor">
                 <td class="px-2 py-2">{{ item.courseCode }}</td>
                 <td class="px-2 py-2">{{ item.courseName }}</td>
                 <td class="px-2 py-2">{{item.level }}</td>
@@ -60,11 +63,11 @@
                 <td class="px-2 py-2">{{ item.category }}</td>
                 <td class="px-2 py-2">{{ item.startDate.split('T')[0] }}</td>
                 <td class="px-2 py-2">{{ item.endDate.split('T')[0] }}</td>
-                <td class="px-2 py-2">
-                    <a href="admin/login" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Update</a>
+                <td class="px-2 py-2" (click)="NavigateToUpdate(item.courseCode)">
+                    <img class="mx-auto" style="height: 20px; " src="/assets/updateIcon.png" alt="Your Company" >
                 </td>
                 <td class="px-2 py-2">                    
-                    <a href="admin/login" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Delete</a>
+                    <img class="mx-auto" style="height: 20px; " src="/assets/deleteicon.png" alt="Your Company" >
                 </td>
             </tr>
         </tbody>

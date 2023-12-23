@@ -18,7 +18,10 @@ import { AllCoursesComponent } from './Forms/all-courses/all-courses.component';
 
 const routes: Routes = [
 
- 
+  {
+    path:'landingPage',
+    component:LangingPageComponent
+  },
   {
     path:'login',
     component:LoginFormComponent
@@ -30,7 +33,7 @@ const routes: Routes = [
   },
   {
     path:'',
-    redirectTo :'login',
+    redirectTo :'landingPage',
     pathMatch: 'full'
   },
   {

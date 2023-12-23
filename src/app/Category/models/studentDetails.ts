@@ -6,7 +6,7 @@ export interface StudentDetailsRequest{
     gender: string;
     academicProgramme: string;
     birthday: string;
-    enrolledDate: Date;
+    enrolledDate: string;
     no: string;
     street :string; 
     district:string;

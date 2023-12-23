@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { StudentDetailsRequest } from '../../Category/models/studentDetails';
 import { Observable, map } from 'rxjs';
+import { LoginServiceService } from '../../Category/Services/login-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-students',
@@ -11,7 +13,7 @@ import { Observable, map } from 'rxjs';
 export class AllStudentsComponent {
 
   model:StudentDetailsRequest[]
-  constructor(private http:HttpClient){
+  constructor(private http:HttpClient, private logginServices:LoginServiceService,private router: Router){
     this.model=[]
   }
   studentData: Observable<StudentDetailsRequest[]> | undefined;
@@ -30,5 +32,13 @@ export class AllStudentsComponent {
         return data; // Return the data part
       })
     );
+  }
+  NavigateToDahsboard() {
+    if(this.logginServices.isLoggedIn){
+      this.router.navigate(['dashboard']);
+    }
+    if(!this.logginServices.isLoggedIn){
+      this.router.navigate(['login']);
+    }
   }
 }

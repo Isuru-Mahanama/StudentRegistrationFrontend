@@ -16,4 +16,8 @@ export class CourseDetailsServicesService {
   }
 
   constructor(private http : HttpClient) { }
+
+  updateCourseDetails(model:CourseDetailsRequest):Observable<any>{
+    return this.http.put<any>(' https://localhost:7061/api/Course/admin/updateCourseDetails', model)
+  }
 }

@@ -5,8 +5,8 @@ export interface AddPersonalDetailsRequest{
     phoneNumber: number;
     gender: string;
     academicProgramme: string;
-    birthday: Date;
-    enrolledDate: Date;
+    birthday: string;
+    enrolledDate: string;
     no: string;
     street :string; 
     district:string;

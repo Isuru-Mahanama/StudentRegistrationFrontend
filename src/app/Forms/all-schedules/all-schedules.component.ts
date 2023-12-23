@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { schedulingRequest } from '../../Category/models/scheduling';
 import { Observable, map } from 'rxjs';
+import { LoginServiceService } from '../../Category/Services/login-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-schedules',
@@ -9,9 +11,13 @@ import { Observable, map } from 'rxjs';
   styleUrl: './all-schedules.component.css'
 })
 export class AllSchedulesComponent {
+NavigateToUpdate(scheduleID:number) {
+  console.log(scheduleID)
+  this.router.navigate(['admin/scheduling', { scheduleID: scheduleID }]);
+}
 
   model : schedulingRequest[]
-  constructor(private http : HttpClient){
+  constructor(private http : HttpClient,private logginServices: LoginServiceService,private router :Router ){
       this.model = [];
   }
   scheduleData: Observable<schedulingRequest[]> | undefined;
@@ -32,4 +38,12 @@ export class AllSchedulesComponent {
     );
   }
 
+  NavigateToDahsboard() {
+    if(this.logginServices.isLoggedIn){
+      this.router.navigate(['dashboard']);
+    }
+    if(!this.logginServices.isLoggedIn){
+      this.router.navigate(['login']);
+    }
+  }
 }

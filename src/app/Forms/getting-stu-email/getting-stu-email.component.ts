@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { LoginServiceService } from '../../Category/Services/login-service.service';
 @Component({
   selector: 'app-getting-stu-email',
   templateUrl: './getting-stu-email.component.html',
@@ -7,9 +8,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GettingStuEmailComponent {
 
+
   studentDetails: any; // Replace 'any' with the actual type of your data
   data :any;
-  constructor(private router: ActivatedRoute){
+  constructor(private router: ActivatedRoute, private logedInServices:LoginServiceService,private route:Router){
 
   }
   ngOnInit(): void {
@@ -21,6 +23,14 @@ export class GettingStuEmailComponent {
       console.log(this.data);
     });
   }
+  GoToDashboard() {
+    if(this.logedInServices.isLoggedIn){
+      this.route.navigate(['dashboard']);
+     }
+        if(!this.logedInServices.isLoggedIn){
+        this.route.navigate(['login']);
+     }
+    }
   onFormSubmit(){
     
 //     console.log(this.model)

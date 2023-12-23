@@ -10,7 +10,7 @@
     .profile{
         @apply text-base 
         font-semibold 
-        leading-7 
+        
         text-gray-900
     }
     .postalCode{

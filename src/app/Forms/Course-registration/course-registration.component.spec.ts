@@ -6,6 +6,7 @@ describe('CourseRegistrationComponent', () => {
   let component: CourseRegistrationComponent;
   let fixture: ComponentFixture<CourseRegistrationComponent>;
 
+ 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CourseRegistrationComponent]

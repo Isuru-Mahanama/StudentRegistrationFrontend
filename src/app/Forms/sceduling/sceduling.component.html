@@ -11,18 +11,24 @@
             <label for="city" 
                    class="block text-sm font-medium leading-6 text-white">Course Code
             </label>
-            <div class="mt-2">
-              <select type="number" 
-                      name="level" 
-                      id="level" 
+            <div class="mt-2 form-group">
+              <select #courseCode ="ngModel"
+                      type="number" 
+                      name="courseCode" 
+                      id="courseCode" 
                       autocomplete="address-level2" 
                       class="city" 
-                      [(ngModel)]="model.courseCode">
+                      [(ngModel)]="model.courseCode"
+                      [class.is-invalid] ="courseCode.invalid && courseCode.touched" 
+                      required>
                 <option  *ngFor="let 
                          courseCode of courseData | async" 
                          [value]="courseCode">{{ courseCode }}
                 </option>
-              </select>              
+              </select>
+              <small class="text-danger" 
+                   [class.d-none]="courseCode.dirty || courseCode.untouched">Please select the course code!
+            </small>              
             </div>
           </div>
             <div *ngFor="let input of inputFields" >
@@ -31,44 +37,62 @@
                        class="block text-sm font-medium leading-6 text-white">Day
                 </label>
                 <div class="mt-2">
-                  <select type="string" 
-                          name="level" 
-                          id="level" 
+                  <select #day="ngModel"
+                          type="string" 
+                          name="day" 
+                          id="day" 
                           autocomplete="address-level2" 
                           class="city" 
-                          [(ngModel)]="model.day">
+                          [class.is-invalid] ="day.invalid && day.touched" 
+                          [(ngModel)]="model.day"
+                          required>
                     <option value="Monday">Monday</option>
                     <option value="Tuesday">Tuesday</option>
                     <option value="Wednesday">Wednesday</option>
                     <option value="Thursday">Thursday</option>
                     <option value="Friday">Friday</option>
                   </select>
+            <small class="text-danger" 
+                [class.d-none]="day.dirty || day.untouched">Please select the day!
+            </small> 
                 </div>
               </div>
             <div class="sm:col-span-1">
               <label for="region" 
                      class="block text-sm font-medium leading-6 text-white">Start Time
               </label>
-              <div class="mt-2" >
-                <input type="time" 
+              <div class="mt-2 form-group" >
+                <input #startTime = "ngModel" 
+                       type="time" 
                        name="startTime" 
                        id="startTime" 
                        autocomplete="address-level1" 
-                       class="region" 
-                       [(ngModel)]="model.startTime"> 
+                       class="region"
+                       [class.is-invalid] ="startTime.invalid && startTime.touched" 
+                       [(ngModel)]="model.startTime"
+                       required>
+                 <small style="color: red" class="text-danger"   
+                        [class.d-none]="startTime.untouched || startTime.valid">Start time is required!
+                 </small> 
               </div>
             </div>
             <div class="sm:col-span-1">
               <label for="postal-code" 
                      class="block text-sm font-medium leading-6 text-white">End Time
               </label>
-              <div class="mt-2">
-                <input type="time" 
+              <div class="mt-2 form-group">
+                <input type="time"
+                       #endTime="ngModel" 
                        name="endTime" 
                        id="endTime" 
                        autocomplete="courseName" 
                        class="postalCode" 
-                       [(ngModel)]="model.endTime">
+                       [(ngModel)]="model.endTime"
+                       [class.is-invalid] ="endTime.invalid && endTime.touched" 
+                       required="">
+                 <small style="color: red" class="text-danger"   
+                        [class.d-none]="endTime.untouched || endTime.valid">End time is required!
+                 </small> 
                 </div>
             </div>
         </div>
@@ -80,7 +104,8 @@
               class=" mb-4  text-sm font-semibold leading-6 text-white">Cancel
       </button>
       <button type="submit" 
-              class=" mb-4  buttonSave">Save
+              class=" mb-4  buttonSave"
+              [disabled]="form.form.invalid">Save
       </button>
     </div>
   </form>

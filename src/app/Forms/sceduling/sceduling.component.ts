@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CourseDetailsServicesService } from '../../Category/Services/course-details-services.service';
 import { LoginServiceService } from '../../Category/Services/login-service.service';
 import { ScheduleServicesService } from '../../Category/Services/schedule-services.service';
+import { schedulingIDRequest } from '../../Category/models/schedulingID';
 
 @Component({
   selector: 'app-sceduling',
@@ -14,12 +15,12 @@ import { ScheduleServicesService } from '../../Category/Services/schedule-servic
   styleUrl: './sceduling.component.css'
 })
 export class ScedulingComponent {
-  model:schedulingRequest;
+  model:schedulingIDRequest;
   someIntVariable: number = 0;
 
   constructor(private httpClient :HttpClient,  private routers :Router, private courseDetailsService: CourseDetailsServicesService,private loggedInuser: LoginServiceService,private scheduleServices: ScheduleServicesService,private acitvateRouter :ActivatedRoute){
     this.model = {
-      scheduleID:NaN,
+      scheduleID:0,
       courseCode:'',
       startTime:'',
       endTime:'',
@@ -42,7 +43,7 @@ export class ScedulingComponent {
      this.scheduleServices.addScheduleDetails(this.model)
     .subscribe({
       next : (response) =>{
-    
+    console.log(response) 
         this.routers.navigate(['viewAllSchedule'], {
           state: { data: response }
         });

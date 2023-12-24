@@ -4,6 +4,7 @@ import { schedulingRequest } from '../../Category/models/scheduling';
 import { Observable, map } from 'rxjs';
 import { LoginServiceService } from '../../Category/Services/login-service.service';
 import { Router } from '@angular/router';
+import { schedulingIDRequest } from '../../Category/models/schedulingID';
 
 @Component({
   selector: 'app-all-schedules',
@@ -16,11 +17,11 @@ NavigateToUpdate(scheduleID:number) {
   this.router.navigate(['admin/scheduling', { scheduleID: scheduleID }]);
 }
 
-  model : schedulingRequest[]
+  model : schedulingIDRequest[]
   constructor(private http : HttpClient,private logginServices: LoginServiceService,private router :Router ){
       this.model = [];
   }
-  scheduleData: Observable<schedulingRequest[]> | undefined;
+  scheduleData: Observable<schedulingIDRequest[]> | undefined;
   ngOnInit(){
     this.scheduleData = this.viewCourse();
     this.scheduleData.subscribe(schedule => {
@@ -28,8 +29,8 @@ NavigateToUpdate(scheduleID:number) {
     this.model = schedule;
   });
   }
-  viewCourse(): Observable<schedulingRequest[]> {
-     return this.http.get<schedulingRequest[]>('https://localhost:7061/api/Schedule/GetAllSchedules').pipe(
+  viewCourse(): Observable<schedulingIDRequest[]> {
+     return this.http.get<schedulingIDRequest[]>('https://localhost:7061/api/Schedule/GetAllSchedules').pipe(
       map(data => {
         
         console.log(data); // This should log the data after the HTTP request is complete

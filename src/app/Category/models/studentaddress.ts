@@ -1,4 +1,4 @@
-export interface AddPersonalDetailsRequest{
+export interface StudentAddressDetails{
    
     firstName: string;
     lastName: string;
@@ -10,6 +10,5 @@ export interface AddPersonalDetailsRequest{
     no: string;
     street :string; 
     district:string;
-    email:string;
     studentID:number;
 }

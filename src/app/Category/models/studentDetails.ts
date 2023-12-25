@@ -13,5 +13,5 @@ scheduleID: any;
     district:string;
     email:string;
     password:string;
-    studentID:string;
+    studentID:number;
 }

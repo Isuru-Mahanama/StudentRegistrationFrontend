@@ -4,6 +4,7 @@ import { StudentDetailsRequest } from '../../Category/models/studentDetails';
 import { Observable, map } from 'rxjs';
 import { LoginServiceService } from '../../Category/Services/login-service.service';
 import { Router } from '@angular/router';
+import { PersaonalDetailsService } from '../../Category/Services/persaonal-details.service';
 
 @Component({
   selector: 'app-all-students',
@@ -11,15 +12,21 @@ import { Router } from '@angular/router';
   styleUrl: './all-students.component.css'
 })
 export class AllStudentsComponent {
-NavigateToUpdate(arg0: any) {
-throw new Error('Method not implemented.');
-}
 
   model:StudentDetailsRequest[]
-  constructor(private http:HttpClient, private logginServices:LoginServiceService,private router: Router){
+  constructor(private http:HttpClient, 
+              private logginServices:LoginServiceService,
+              private router: Router,
+              public personalDetailsService: PersaonalDetailsService){
     this.model=[]
   }
   studentData: Observable<StudentDetailsRequest[]> | undefined;
+
+  NavigateToUpdate(studentID:number) {
+    console.log(studentID)
+    this.personalDetailsService.saveUpdatebuttonChange = 1;
+    this.router.navigate(['admin/personalDetails', { studentID: studentID }]);}
+  
   ngOnInit(){
     this.studentData = this.viewStudents();
     this.studentData.subscribe(students => {

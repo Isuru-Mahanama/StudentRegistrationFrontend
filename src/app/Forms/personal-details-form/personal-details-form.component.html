@@ -1,7 +1,6 @@
 
 <form  class="bg-black" 
-       #form ="ngForm" 
-       (ngSubmit)="onFormSubmit()">
+       #form ="ngForm">
     <div class=" boarder flex">
       <div class="p1 mt-10  ">
         <h2 class="profile text-white justify-center flex">Profile</h2>
@@ -270,10 +269,17 @@
       <button type="button" 
               class="text-sm font-semibold leading-6 text-white">Cancel
       </button>
-      <button type="submit" 
-              class="buttonSave"
-              [disabled]="form.form.invalid">Save
-      </button>
+      <button *ngIf="personalDetailsService.saveUpdatebuttonChange === 0" 
+             type="submit" class="mb-4 buttonSave"  
+             (click) ="onFormSubmit()"
+             [disabled]="form.form.invalid">Save
+    </button>
+    <button *ngIf="personalDetailsService.saveUpdatebuttonChange === 1" 
+             type="submit" class="mb-4 buttonSave" 
+             (click) ="onFormUpdate()"
+             [disabled]="form.form.invalid"
+             >Update
+    </button>
     </div>
   </form>
   

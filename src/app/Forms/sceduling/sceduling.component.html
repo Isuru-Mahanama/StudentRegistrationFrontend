@@ -1,7 +1,6 @@
 
 <form  class="bg-black" 
-       #form ="ngForm" 
-       (ngSubmit)="onFormSubmit()" >
+       #form ="ngForm">
     <div class="space-y-12 boarder">
       <div class="border-b border-gray-900/10 pb-12 " >
         <h2 class="profile text-white mt-2 flex justify-center">Course Sceduling</h2>
@@ -103,10 +102,17 @@
       <button type="button" 
               class=" mb-4  text-sm font-semibold leading-6 text-white">Cancel
       </button>
-      <button type="submit" 
-              class=" mb-4  buttonSave"
-              [disabled]="form.form.invalid">Save
-      </button>
+    <button *ngIf="scheduleServices.someIntVariable === 0" 
+             type="submit" class="mb-4 buttonSave"  
+             (click) ="onFormSubmit()"
+             [disabled]="form.form.invalid">Save
+    </button>
+    <button *ngIf="scheduleServices.someIntVariable === 1" 
+             type="submit" class="mb-4 buttonSave" 
+             (click) ="onFormUpdate()"
+             [disabled]="form.form.invalid"
+             >Update
+    </button>
     </div>
   </form>
   

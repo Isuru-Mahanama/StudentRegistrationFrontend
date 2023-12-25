@@ -1,4 +1,5 @@
 export interface StudentDetailsRequest{
+scheduleID: any;
    
     firstName: string;
     lastName: string;

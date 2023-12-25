@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import { LoginServiceService } from '../../Category/Services/login-service.service';
 import { Router } from '@angular/router';
 import { schedulingIDRequest } from '../../Category/models/schedulingID';
+import { ScheduleServicesService } from '../../Category/Services/schedule-services.service';
 
 @Component({
   selector: 'app-all-schedules',
@@ -14,17 +15,22 @@ import { schedulingIDRequest } from '../../Category/models/schedulingID';
 export class AllSchedulesComponent {
 NavigateToUpdate(scheduleID:number) {
   console.log(scheduleID)
+  this.scheduleServices.someIntVariable = 1;
   this.router.navigate(['admin/scheduling', { scheduleID: scheduleID }]);
 }
 
   model : schedulingIDRequest[]
-  constructor(private http : HttpClient,private logginServices: LoginServiceService,private router :Router ){
+  constructor(private http : HttpClient,
+              private logginServices: LoginServiceService,
+              private router :Router,
+              private scheduleServices:ScheduleServicesService){
       this.model = [];
   }
   scheduleData: Observable<schedulingIDRequest[]> | undefined;
   ngOnInit(){
     this.scheduleData = this.viewCourse();
     this.scheduleData.subscribe(schedule => {
+
     console.log("Schedule", schedule);
     this.model = schedule;
   });

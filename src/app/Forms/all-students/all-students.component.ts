@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
   styleUrl: './all-students.component.css'
 })
 export class AllStudentsComponent {
+NavigateToUpdate(arg0: any) {
+throw new Error('Method not implemented.');
+}
 
   model:StudentDetailsRequest[]
   constructor(private http:HttpClient, private logginServices:LoginServiceService,private router: Router){

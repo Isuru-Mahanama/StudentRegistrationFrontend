@@ -46,11 +46,11 @@
                 <td class="px-2 py-2">{{ item.day }}</td>
                 <td class="px-2 py-2">{{item.startTime}}</td>
                 <td class="px-2 py-2">{{ item.endTime }}</td>
-                <td class="px-2 py-2">
-                    <button href="admin/login" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500" (click)="NavigateToUpdate(item.scheduleID)" >Update</button>
+                <td class="px-2 py-2" (click)="NavigateToUpdate(item.scheduleID)">
+                    <img class="mx-auto" style="height: 20px; " src="/assets/updateIcon.png" alt="Your Company" >
                 </td>
                 <td class="px-2 py-2">                    
-                    <button href="admin/login" class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Delete</button>
+                    <img class="mx-auto" style="height: 20px; " src="/assets/deleteicon.png" alt="Your Company" >
                 </td>
             </tr>
         </tbody>

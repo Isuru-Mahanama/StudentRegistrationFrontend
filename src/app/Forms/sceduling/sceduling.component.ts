@@ -16,9 +16,13 @@ import { schedulingIDRequest } from '../../Category/models/schedulingID';
 })
 export class ScedulingComponent {
   model:schedulingIDRequest;
-  someIntVariable: number = 0;
 
-  constructor(private httpClient :HttpClient,  private routers :Router, private courseDetailsService: CourseDetailsServicesService,private loggedInuser: LoginServiceService,private scheduleServices: ScheduleServicesService,private acitvateRouter :ActivatedRoute){
+  constructor(private httpClient :HttpClient,  
+              private routers :Router, 
+              private courseDetailsService: CourseDetailsServicesService,
+              private loggedInuser: LoginServiceService,
+              public scheduleServices: ScheduleServicesService,
+              private acitvateRouter :ActivatedRoute){
     this.model = {
       scheduleID:0,
       courseCode:'',
@@ -46,7 +50,8 @@ export class ScedulingComponent {
     console.log(response) 
         this.routers.navigate(['viewAllSchedule'], {
           state: { data: response }
-        });
+          
+        })
       },
       error: (error) =>{
         console.log(error);
@@ -64,6 +69,7 @@ export class ScedulingComponent {
 
      // Retrieve the courseCode parameter from the URL
      this.acitvateRouter.params.subscribe((params: { [x: string]: any; }) => {
+      
       const scheduleID = params['scheduleID'];
       if (scheduleID) {
         // Do something with the courseCode, e.g., assign it to your model
@@ -82,7 +88,6 @@ export class ScedulingComponent {
       (response) => {
         // Handle the API response here
         
-        this.someIntVariable = 1;
         console.log('API Response:', response);
         
         this.model = { ...this.model, ...response };
@@ -99,7 +104,6 @@ export class ScedulingComponent {
   }
   // 
    getSchedules(scheduleID:string): Observable<schedulingRequest[]> {
-
     return this.httpClient.get<schedulingRequest[]>('https://localhost:7061/api/Schedule/admin/getScheduleByID?scheduleID=${scheduleID}').pipe(
      map(data => {
        console.log("THose are the courseDetails")
@@ -112,12 +116,36 @@ export class ScedulingComponent {
   viewCourseCodes(): Observable<string[]> {
      return this.httpClient.get<string[]>('https://localhost:7061/api/Course/GetAllCourseCodes').pipe(
       map(data => {
-        
         console.log(data); // This should log the data after the HTTP request is complete
         return data; // Return the data part
       })
     );
   }
 
- 
+ //
+ onFormUpdate(){
+  if(this.loggedInuser.isLoggedIn){
+    console.log(this.model)
+   this.scheduleServices.updateScheduleDetails(this.model)
+  .subscribe({
+    next : (response) =>{
+  
+      this.routers.navigate(['viewAllSchedule'], {
+        state: { data: response }
+      });
+    },
+    error: (error) =>{
+      console.log(error);
+    }
+  })
+}
+if(!this.loggedInuser.isLoggedIn){
+  this.routers.navigate(['login']);
+}
+}
+backToDashboard(){
+  if(this.loggedInuser){
+    this.routers.navigate(['dashboard']);
+  }
+}
 }

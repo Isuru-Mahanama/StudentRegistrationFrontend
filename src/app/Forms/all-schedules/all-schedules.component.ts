@@ -13,6 +13,22 @@ import { ScheduleServicesService } from '../../Category/Services/schedule-servic
   styleUrl: './all-schedules.component.css'
 })
 export class AllSchedulesComponent {
+
+NavigateToDelete(scheduleID: number) {
+  console.log(scheduleID)
+  const apiUrl = `https://localhost:7061/api/Schedule/admin/getScheduleDelete?scheduleID=${scheduleID}`;
+
+  this.http.delete(apiUrl).subscribe(
+    (response) => {      
+      console.log('API Response:', response);
+     
+    },
+    (error) => {
+      // Handle errors here
+      console.error('API Error:', error);
+    }
+  );
+}
 NavigateToUpdate(scheduleID:number) {
   console.log(scheduleID)
   this.scheduleServices.someIntVariable = 1;

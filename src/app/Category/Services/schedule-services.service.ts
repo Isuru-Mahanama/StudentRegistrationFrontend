@@ -8,7 +8,9 @@ import { schedulingIDRequest } from '../models/schedulingID';
   providedIn: 'root'
 })
 export class ScheduleServicesService {
+  
 
+ 
   someIntVariable: number = 0;
 
   constructor(private http: HttpClient) { }

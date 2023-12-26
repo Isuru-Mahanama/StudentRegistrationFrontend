@@ -21,7 +21,8 @@ NavigateToDelete(scheduleID: number) {
   this.http.delete(apiUrl).subscribe(
     (response) => {      
       console.log('API Response:', response);
-     
+      window.location.reload();
+
     },
     (error) => {
       // Handle errors here

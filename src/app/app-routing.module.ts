@@ -14,6 +14,7 @@ import { MyProfileComponent } from './Forms/my-profile/my-profile.component';
 import { AllSchedulesComponent } from './Forms/all-schedules/all-schedules.component';
 import { AllStudentsComponent } from './Forms/all-students/all-students.component';
 import { AllCoursesComponent } from './Forms/all-courses/all-courses.component';
+import { CourseEnrollemtComponent } from './Forms/course-enrollemt/course-enrollemt.component';
 
 
 const routes: Routes = [
@@ -72,6 +73,10 @@ const routes: Routes = [
   {
     path:'viewAllCourses',
     component: AllCoursesComponent
+  },
+  {
+    path:'viewCourseEnrollement',
+    component: CourseEnrollemtComponent
   },
   {
       path:'**',

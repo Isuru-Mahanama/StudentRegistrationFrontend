@@ -24,12 +24,12 @@ export class UserDashboardComponent {
   }
     
 
-  NaviagateToCourseRegistration(){
+  NaviagateToCourseEnrollement(){
     
-    console.log("right befor registration navigation")
+    console.log("right before enrollement navigation")
      if(this.logedInServices.isLoggedIn){
   
-    this.router.navigate(['admin/courseRegistration']);
+    this.router.navigate(['viewCourseEnrollement']);
        console.log("after registration navigation")
     }
      if(!this.logedInServices.isLoggedIn){

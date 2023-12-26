@@ -19,6 +19,7 @@ import { MyProfileComponent } from './Forms/my-profile/my-profile.component';
 import { AllStudentsComponent } from './Forms/all-students/all-students.component';
 import { AllSchedulesComponent } from './Forms/all-schedules/all-schedules.component';
 import { AllCoursesComponent } from './Forms/all-courses/all-courses.component';
+import { CourseEnrollemtComponent } from './Forms/course-enrollemt/course-enrollemt.component';
 
 
 
@@ -39,7 +40,8 @@ import { AllCoursesComponent } from './Forms/all-courses/all-courses.component';
     MyProfileComponent,
     AllStudentsComponent,
     AllSchedulesComponent,
-    AllCoursesComponent
+    AllCoursesComponent,
+    CourseEnrollemtComponent
     
   ],
   imports: [

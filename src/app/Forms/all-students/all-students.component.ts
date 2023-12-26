@@ -51,4 +51,21 @@ export class AllStudentsComponent {
       this.router.navigate(['login']);
     }
   }
+
+  NavigateToDelete(studentID: number) {
+    console.log(studentID)
+    const apiUrl = `https://localhost:7061/api/User/admin/getStudentDelete?studentID=${studentID}`;
+  
+    this.http.delete(apiUrl).subscribe(
+      (response) => {      
+        console.log('API Response:', response);
+        // Hard reload the page to fetch updated data
+      window.location.reload();
+      },
+      (error) => {
+        // Handle errors here
+        console.error('API Error:', error);
+      }
+    );
+  }
 }

@@ -13,7 +13,10 @@ import { LoginServiceService } from '../../Category/Services/login-service.servi
 export class AllCoursesComponent {
 
   model:CourseDetailsRequest[];
-  constructor(private htttpClient :HttpClient, private router:Router, private logginServices:LoginServiceService,private route:ActivatedRoute){
+  constructor(private htttpClient :HttpClient, 
+              private router:Router, 
+              private logginServices:LoginServiceService,
+              private route:ActivatedRoute){
     this.model = [];
 
   }
@@ -64,5 +67,21 @@ export class AllCoursesComponent {
     if(!this.logginServices.isLoggedIn){
       this.router.navigate(['login']);
     }
+  }
+
+  NavigateToDelete(courseCode: string) {
+    console.log(courseCode)
+    const apiUrl = `https://localhost:7061/api/Course/admin/getCourseDelete?courseCode=${courseCode}`;
+  
+    this.htttpClient.delete(apiUrl).subscribe(
+      (response) => {      
+        console.log('API Response:', response);
+        window.location.reload();
+      },
+      (error) => {
+        // Handle errors here
+        console.error('API Error:', error);
+      }
+    );
   }
 }

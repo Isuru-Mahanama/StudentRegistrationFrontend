@@ -23,9 +23,7 @@ export class AllCoursesComponent {
   
   courseData: Observable<CourseDetailsRequest[]> | undefined;
   NavigateToUpdate(courseCode: string) {
-    
     this.router.navigate(['admin/courseRegistration', { courseCode: courseCode }]);
-    
   }
   ngOnInit() {
     this.courseData = this.viewCourse();

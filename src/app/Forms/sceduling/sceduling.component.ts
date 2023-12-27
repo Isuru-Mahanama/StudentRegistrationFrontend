@@ -16,7 +16,6 @@ import { schedulingIDRequest } from '../../Category/models/schedulingID';
 })
 export class ScedulingComponent {
   model:schedulingIDRequest;
-
   constructor(private httpClient :HttpClient,  
               private routers :Router, 
               private courseDetailsService: CourseDetailsServicesService,

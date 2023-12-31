@@ -17,7 +17,10 @@ export class MyProfileComponent  {
   
   profileData$: Observable<StudentDetailsRequest> | undefined;
 
-  constructor(private httpClient :HttpClient, private personalDetails : PersaonalDetailsService, private loginService : LoginServiceService, private routers :Router){
+  constructor(private httpClient :HttpClient, 
+              private personalDetails : PersaonalDetailsService, 
+              private loginService : LoginServiceService, 
+              private routers :Router){
 
   }
   ngOnInit() {

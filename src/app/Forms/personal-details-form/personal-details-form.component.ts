@@ -87,7 +87,7 @@ export class PersonalDetailsFormComponent {
       
         // Create a navigation extras object to pass data
     
-        this.router.navigate(['admin/gettingstudentdetails'], {
+        this.router.navigate(['viewAllStudents'], {
           state: { data: response }
         });
       },

@@ -15,6 +15,7 @@ import { AllSchedulesComponent } from './Forms/all-schedules/all-schedules.compo
 import { AllStudentsComponent } from './Forms/all-students/all-students.component';
 import { AllCoursesComponent } from './Forms/all-courses/all-courses.component';
 import { CourseEnrollemtComponent } from './Forms/course-enrollemt/course-enrollemt.component';
+import { TimeTableComponent } from './Forms/time-table/time-table.component';
 
 
 const routes: Routes = [
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path:'myProfile',
     component: MyProfileComponent
+  },
+  {
+    path:'viewTimeTable',
+    component:TimeTableComponent
   },
   {
     path:'viewAllSchedule',

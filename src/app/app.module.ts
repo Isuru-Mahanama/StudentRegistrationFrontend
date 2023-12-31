@@ -21,6 +21,7 @@ import { AllSchedulesComponent } from './Forms/all-schedules/all-schedules.compo
 import { AllCoursesComponent } from './Forms/all-courses/all-courses.component';
 import { CourseEnrollemtComponent } from './Forms/course-enrollemt/course-enrollemt.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TimeTableComponent } from './Forms/time-table/time-table.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AllStudentsComponent,
     AllSchedulesComponent,
     AllCoursesComponent,
-    CourseEnrollemtComponent
+    CourseEnrollemtComponent,
+    TimeTableComponent
   ],
   imports: [
     BrowserModule,

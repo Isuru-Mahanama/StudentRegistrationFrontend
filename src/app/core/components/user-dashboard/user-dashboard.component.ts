@@ -8,12 +8,11 @@ import { LoginServiceService } from '../../../Category/Services/login-service.se
   styleUrl: './user-dashboard.component.css'
 })
 export class UserDashboardComponent {
-  constructor(private router:Router , private logedInServices : LoginServiceService){
+  constructor(private router:Router , 
+              private logedInServices : LoginServiceService){
 
   }
-
- 
-  NaviagateToPersonalDetails(){
+    NaviagateToPersonalDetails(){
     
     if(this.logedInServices.isLoggedIn){
      this.router.navigate(['myProfile']);
@@ -43,7 +42,7 @@ export class UserDashboardComponent {
     
   NaviagateToScheduling(){
     if(this.logedInServices.isLoggedIn){
-   this.router.navigate(['admin/scheduling']);
+   this.router.navigate(['viewTimeTable']);
    }
    if(!this.logedInServices.isLoggedIn){
      this.router.navigate(['login']);

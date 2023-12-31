@@ -1,0 +1,78 @@
+<div class="bg-black p-4">
+  
+    <div class="py-3 mt-6 flex items-center  gap-x-6">
+        <h1 class="text-white py-4 items-center justify-start">Student Registration Details ______</h1>
+       
+    <button type="submit" class="buttonSave justify-end" (click)="NavigateToDahsboard()">GO TO DASHBOARD</button>
+</div>
+
+    <table class=" text-sm bg-black table-auto w-full border-collapse border border-slate-700 rounded-lg shadow-md">
+        <thead>
+            <tr class="text-left text-white bg-slate-900">
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Time</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Monday</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Tuesday</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Wednesday</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Thursday</span>
+                    </div>
+                </th>
+                <th class="px-2 py-2">
+                    <div class="bg-white p-2 rounded">
+                        <span class="text-black">Friday</span>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--  -->
+            <tr *ngFor="let item of model" class="text-white border-b border-white hover:bg-white hcolor">
+                <td class="px-2 py-2">{{ item.startTime }} - {{ item.endTime }}</td>
+                
+                <td class="px-2 py-2" *ngIf="item.day === 'Monday'; else emptyCell">{{ item.courseCode }}</td>
+
+                <ng-template #emptyCell>
+                <!-- Display an empty cell when item.day is not 'Monday' -->
+                <td class="px-2 py-2"></td>
+                </ng-template>
+
+                <td class="px-2 py-2" *ngIf="item.day === 'Tuesday'; else emptyCell">{{ item.courseCode }}</td>
+                <ng-template #emptyCell>
+                    <td class="px-2 py-2"></td>
+                </ng-template>
+
+                <td class="px-2 py-2" *ngIf="item.day === 'Wednesday'; else emptyCell">{{ item.courseCode }}</td>
+                <ng-template #emptyCell>
+                    <td class="px-2 py-2"></td>
+                </ng-template>
+
+                <td class="px-2 py-2" *ngIf="item.day === 'Thursday'; else emptyCell">{{ item.courseCode }}</td>
+                <ng-template #emptyCell>
+                    <td class="px-2 py-2"></td>
+                </ng-template>
+
+                <td class="px-2 py-2" *ngIf="item.day === 'Friday'; else emptyCell">{{ item.courseCode }}</td>
+                <ng-template #emptyCell>
+                    <td class="px-2 py-2"></td>
+                </ng-template>                
+            </tr>
+        </tbody>
+    </table>
+</div>

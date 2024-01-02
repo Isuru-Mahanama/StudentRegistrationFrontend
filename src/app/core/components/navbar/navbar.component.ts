@@ -9,6 +9,8 @@ import { Route, Router } from '@angular/router';
 })
 export class NavbarComponent {
 
+constructor(public logedInServices : LoginServiceService,private router:Router){}
+
 NaviagateToLogin() {
   
     if(!this.logedInServices.isLoggedIn){
@@ -48,9 +50,6 @@ NaviagateToAbout() {
     }
 }
 
-  constructor(public logedInServices : LoginServiceService,private router:Router){
-
-  }
   NaviagateToDashboard(){
     if(this.logedInServices.isLoggedIn){
    this.router.navigate(['dashboard']);

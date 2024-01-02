@@ -147,7 +147,7 @@
                     [(ngModel)]="model.no"  
                     [class.is-invalid] = "addressNo.invalid && addressNo.touched"
                     required
-                    pattern="^[a-zA-Z]{3,}" >
+                    pattern=".*{3,}" >
           <div *ngIf="addressNo.errors && (addressNo.dirty || addressNo.touched)">
               <small style="color: red" 
                      class="text-danger" 
@@ -229,7 +229,7 @@
                      #academicProgramme="ngModel"
                      [class.is-invalid] = "academicProgramme.invalid && academicProgramme.touched"
                      required
-                     pattern="^[A-Z]{3,}" >
+                     pattern="^[A-Z ]{3,}" >
             <div *ngIf="academicProgramme.errors && (academicProgramme.dirty || academicProgramme.touched)">
                 <small style="color: red" 
                        class="text-danger" 
@@ -267,7 +267,8 @@
   
     <div class="mt-6 pb-4 flex items-center justify-center gap-x-6">
       <button type="button" 
-              class="text-sm font-semibold leading-6 text-white">Cancel
+              class="text-sm font-semibold leading-6 text-white"
+              (click) ="backToDashboard()">Cancel
       </button>
       <button *ngIf="personalDetailsService.saveUpdatebuttonChange === 0" 
              type="submit" class="mb-4 buttonSave"  

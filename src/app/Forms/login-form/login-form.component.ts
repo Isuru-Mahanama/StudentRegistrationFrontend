@@ -7,6 +7,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { AppComponent } from '../../app.component';
 import { jwtDecode } from 'jwt-decode';
 import { EmailValidator } from '@angular/forms';
+import { NavbarServiceService } from '../../Category/Services/navbar-service.service';
 
 
 
@@ -23,10 +24,12 @@ const jwtHelper =  new JwtHelperService();
 export class LoginFormComponent {
   
   model : LoginDetailsRequest;
+  tokenMessage: any;
   constructor( 
         private loginServiceService : LoginServiceService, 
         private router:Router, 
-        private httpClient :HttpClient
+        private httpClient :HttpClient,
+        private navbarServices:NavbarServiceService
       ) {
     this.model = {
     email:'',
@@ -42,20 +45,27 @@ export class LoginFormComponent {
     return emailRegex.test(email);
   }
   onFormSubmit(){
+      this.tokenMessage = '';
       this.loginServiceService.addLoginDetails(this.model)
       .subscribe({      
       next : (response : any) =>{
         console.log(JSON.parse(response).userType);
         console.log("This was successfull");
+        console.log(JSON.parse(response).token)
+        this.tokenMessage = JSON.parse(response).token;
         localStorage.setItem('LoginToken',response);
         this.loginServiceService.loginNumber =1;
      
        if(this.loginServiceService.isLoggedIn){
         if(JSON.parse(response).userType !== undefined && JSON.parse(response).userType === 1){
           this.router.navigate(['dashboard']);
+          this.navbarServices.shouldShowNavbar = true;
+          this.navbarServices.shouldShowUserNavbar =false;
         }
         else{
          this.router.navigate(['userDashboard']);
+         this.navbarServices.shouldShowNavbar =false;
+         this.navbarServices.shouldShowUserNavbar = true;
           }
        }
 
@@ -67,7 +77,9 @@ export class LoginFormComponent {
       error: (error) =>{
         
         console.log(error);
+        
       }
+      
     })
     
     

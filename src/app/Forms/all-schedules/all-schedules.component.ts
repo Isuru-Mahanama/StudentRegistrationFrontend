@@ -70,4 +70,15 @@ NavigateToUpdate(scheduleID:number) {
       this.router.navigate(['login']);
     }
   }
+  getAmPmIndicator(startTime: string): string {
+    const startTimeDate = this.convertToTime(startTime);
+    return startTimeDate.getHours() < 12 ? 'a.m' : 'p.m';
+  }
+  convertToTime(dateString: string): Date {
+    const [hours, minutes] = dateString.split(':').map(Number);
+    const date = new Date();
+    date.setHours(hours);
+    date.setMinutes(minutes);
+    return date;
+  }
 }

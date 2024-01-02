@@ -8,13 +8,16 @@ import { CourseDetailsServicesService } from '../../Category/Services/course-det
 import { LoginServiceService } from '../../Category/Services/login-service.service';
 import { ScheduleServicesService } from '../../Category/Services/schedule-services.service';
 import { schedulingIDRequest } from '../../Category/models/schedulingID';
-
+import { PickerInteractionMode } from 'igniteui-angular';
 @Component({
   selector: 'app-sceduling',
   templateUrl: './sceduling.component.html',
   styleUrl: './sceduling.component.css'
 })
 export class ScedulingComponent {
+  public mode: PickerInteractionMode = PickerInteractionMode.DropDown;
+    public format = 'hh:mm tt';
+    public date: Date = new Date();
   model:schedulingIDRequest;
   constructor(private httpClient :HttpClient,  
               private routers :Router, 
@@ -141,6 +144,7 @@ export class ScedulingComponent {
 if(!this.loggedInuser.isLoggedIn){
   this.routers.navigate(['login']);
 }
+this.scheduleServices.someIntVariable = 0
 }
 backToDashboard(){
   if(this.loggedInuser){

@@ -19,7 +19,7 @@
                     </div>
                 </th>
                 <th class="px-2 py-2">
-                    <div class="bg-white p-2 rounded">
+                    <div class="bg-white p-2 rounded" >
                         <span class="text-black">Start Time</span>
                     </div>
                 </th>
@@ -44,8 +44,8 @@
             <tr *ngFor="let item of model" class="text-white border-b border-white hover:bg-white hcolor">
                 <td class="px-2 py-2">{{ item.courseCode }}</td>
                 <td class="px-2 py-2">{{ item.day }}</td>
-                <td class="px-2 py-2">{{item.startTime}}</td>
-                <td class="px-2 py-2">{{ item.endTime }}</td>
+                <td class="px-2 py-2">{{ item.startTime }} {{ getAmPmIndicator(item.startTime) }}</td>
+                <td class="px-2 py-2">{{ item.endTime }} {{ getAmPmIndicator(item.endTime) }}</td>
                 <td class="px-2 py-2" (click)="NavigateToUpdate(item.scheduleID)">
                     <img class="mx-auto" style="height: 20px; " src="/assets/updateIcon.png" alt="Your Company" >
                 </td>

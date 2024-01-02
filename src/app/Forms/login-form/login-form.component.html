@@ -13,7 +13,7 @@
             class="space-y-6" 
             action="#" 
             method="POST" 
-            (ngSubmit)="onFormSubmit()">
+            (ngSubmit)="onFormSubmit()">      
         <div>
           <label for="email" 
                  class="block text-sm font-medium leading-6 text-white">Email address
@@ -65,6 +65,9 @@
                      class="text-danger" 
                      *ngIf="password.errors?.['required']">Password is required!
               </small>
+            </div>
+            <div *ngIf="tokenMessage && (password.dirty && password.valid)" class="text-white mt-2">
+              <small style="color: red" class="text-danger">{{ tokenMessage }}</small>
             </div>
           </div>
         </div>

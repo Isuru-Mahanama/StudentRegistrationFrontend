@@ -137,6 +137,10 @@
         sm:text-sm sm:leading-6
     }
 }
+igx-time-picker {
+    width: 400px;
+}
+
 .boarder{
     padding: 50px;
 }

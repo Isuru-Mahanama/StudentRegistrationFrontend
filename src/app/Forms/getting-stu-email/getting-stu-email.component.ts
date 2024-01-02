@@ -31,31 +31,5 @@ export class GettingStuEmailComponent {
         this.route.navigate(['login']);
      }
     }
-  onFormSubmit(){
-    
-//     console.log(this.model)
-//     this.loginServiceService.addLoginDetails(this.model)
-//     .subscribe({      
-//       next : (response : any) =>{
-      
-//         console.log(response)
-//         console.log("This was successfull");
-       
-//         localStorage.setItem('LoginToken',response);
-        
-//       //  if(this.loginServiceService.isLoggedIn){
-//       //   this.router.navigate(['dashboard']);
-//       //  }
-
-//       //  if(!this.loginServiceService.isLoggedIn){
-//       //   console.log("Login again. token expired")
-//       //  }
-       
-//       },
-//       // error: (error) =>{
-        
-//       //   console.log(error);
-//       // }
-//     })
-  }
+  
  }

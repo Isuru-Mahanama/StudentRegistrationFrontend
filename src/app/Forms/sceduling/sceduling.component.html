@@ -61,6 +61,7 @@
                      class="block text-sm font-medium leading-6 text-white">Start Time
               </label>
               <div class="mt-2 form-group" >
+                
                 <input #startTime = "ngModel" 
                        type="time" 
                        name="startTime" 
@@ -99,7 +100,8 @@
         </div>
       </div>
     <div class="mt-6  flex items-center justify-center gap-x-6 py-4">
-      <button type="button" 
+      <button type="button"
+              (click) ="backToDashboard()" 
               class=" mb-4  text-sm font-semibold leading-6 text-white">Cancel
       </button>
     <button *ngIf="scheduleServices.someIntVariable === 0" 

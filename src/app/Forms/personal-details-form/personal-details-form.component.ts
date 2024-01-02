@@ -36,6 +36,7 @@ export class PersonalDetailsFormComponent {
   }
 
   ngOnInit(){
+    
      // Retrieve the courseCode parameter from the URL
      this.activateRouter.params.subscribe((params: { [x: string]: any; }) => {
       
@@ -87,7 +88,7 @@ export class PersonalDetailsFormComponent {
       
         // Create a navigation extras object to pass data
     
-        this.router.navigate(['viewAllStudents'], {
+        this.router.navigate(['admin/gettingstudentdetails'], {
           state: { data: response }
         });
       },
@@ -122,6 +123,7 @@ export class PersonalDetailsFormComponent {
   if(!this.loggedInUser.isLoggedIn){
     this.router.navigate(['login']);
   }
+  this.personalDetailsService.saveUpdatebuttonChange = 0
   }
   backToDashboard(){
     if(this.loggedInUser){

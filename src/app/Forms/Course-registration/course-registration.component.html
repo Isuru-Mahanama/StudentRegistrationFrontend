@@ -74,7 +74,7 @@
                    class="postalCode" 
                    [(ngModel)]="model.courseName"
                    [class.is-invalid] ="courseName.invalid && courseName.touched"
-                   pattern="^[A-Z]{5,}"                   
+                   pattern="^[A-Z ]{5,}"                   
                    required
                    >
           <div *ngIf="courseName.errors && (courseName.dirty || courseName.touched)">

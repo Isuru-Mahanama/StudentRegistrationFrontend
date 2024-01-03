@@ -8,14 +8,10 @@ import { NavbarServiceService } from './Category/Services/navbar-service.service
 })
 export class AppComponent {
   title = 'StudentRegistration';
-  ShowNavbar: boolean | undefined ;
-  ShowUserNavbar: boolean | undefined ;
-  constructor(private navbarServices: NavbarServiceService){
+  constructor(private navbarServices : NavbarServiceService){
+
   }
-  
-  ngOnInit(){
-    this.ShowNavbar = this.navbarServices.shouldShowNavbar !== undefined ? this.navbarServices.shouldShowNavbar : false;
-    this.ShowUserNavbar = this.navbarServices.shouldShowUserNavbar !== undefined ? this.navbarServices.shouldShowUserNavbar : false;
+  ShowNavbar(): boolean {
+    return this.navbarServices.adminNavbar;
   }
-  
 }

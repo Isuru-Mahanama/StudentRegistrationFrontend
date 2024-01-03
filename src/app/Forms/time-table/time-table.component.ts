@@ -23,7 +23,7 @@ export class TimeTableComponent {
               private router: Router,
               private activateRouter:ActivatedRoute,
               private httpClient:HttpClient){
-                this.model=[]
+              this.model=[]
               }
   NavigateToDahsboard() {
     if(this.logginServices.isLoggedIn){

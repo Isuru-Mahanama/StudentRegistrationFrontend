@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class NavbarServiceService {
-  shouldShowNavbar: boolean | undefined ;
-  shouldShowUserNavbar: boolean | undefined ;
+  adminNavbar: boolean = true ;
   constructor() { }
 }

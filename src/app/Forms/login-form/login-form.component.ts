@@ -59,13 +59,11 @@ export class LoginFormComponent {
        if(this.loginServiceService.isLoggedIn){
         if(JSON.parse(response).userType !== undefined && JSON.parse(response).userType === 1){
           this.router.navigate(['dashboard']);
-          this.navbarServices.shouldShowNavbar = true;
-          this.navbarServices.shouldShowUserNavbar =false;
+          this.navbarServices.adminNavbar = true;
         }
         else{
          this.router.navigate(['userDashboard']);
-         this.navbarServices.shouldShowNavbar =false;
-         this.navbarServices.shouldShowUserNavbar = true;
+         this.navbarServices.adminNavbar = false;
           }
        }
 

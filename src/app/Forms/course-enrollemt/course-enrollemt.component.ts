@@ -7,6 +7,8 @@ import { Observable, map } from 'rxjs';
 import { StudentDetailsRequest } from '../../Category/models/studentDetails';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EnrollementServicesService } from '../../Category/Services/enrollement-services.service';
+import { NavbarComponent } from '../../core/components/navbar/navbar.component';
+import { NavbarServiceService } from '../../Category/Services/navbar-service.service';
 
 @Component({
   selector: 'app-course-enrollemt',
@@ -21,7 +23,7 @@ export class CourseEnrollemtComponent {
               private router:Router, 
               private logginServices:LoginServiceService,
               private route:ActivatedRoute,
-              private enrollementServices:EnrollementServicesService){
+              private enrollementServices:EnrollementServicesService,){
     this.model = [];
 
   }

@@ -6,6 +6,7 @@ import { StudentDetailsRequest } from '../../Category/models/studentDetails';
 import { LoginServiceService } from '../../Category/Services/login-service.service';
 import { Observable } from 'rxjs';
 import {  Router } from '@angular/router';
+import { NavbarServiceService } from '../../Category/Services/navbar-service.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -16,11 +17,11 @@ export class MyProfileComponent  {
 
   
   profileData$: Observable<StudentDetailsRequest> | undefined;
-
   constructor(private httpClient :HttpClient, 
               private personalDetails : PersaonalDetailsService, 
               private loginService : LoginServiceService, 
-              private routers :Router){
+              private routers :Router,
+              private navbarServices: NavbarServiceService){
 
   }
   ngOnInit() {

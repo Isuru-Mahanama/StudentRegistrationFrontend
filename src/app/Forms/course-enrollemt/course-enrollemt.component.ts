@@ -9,6 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { EnrollementServicesService } from '../../Category/Services/enrollement-services.service';
 import { NavbarComponent } from '../../core/components/navbar/navbar.component';
 import { NavbarServiceService } from '../../Category/Services/navbar-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-course-enrollemt',
@@ -16,6 +17,7 @@ import { NavbarServiceService } from '../../Category/Services/navbar-service.ser
   styleUrl: './course-enrollemt.component.css'
 })
 export class CourseEnrollemtComponent {
+  rowErrorMessages: { [key: string]: string } = {};
   model:CourseDetailsRequest[];
   profileData$: Observable<StudentDetailsRequest> | undefined;
   courseData: Observable<CourseDetailsRequest[]> | undefined;
@@ -23,7 +25,8 @@ export class CourseEnrollemtComponent {
               private router:Router, 
               private logginServices:LoginServiceService,
               private route:ActivatedRoute,
-              private enrollementServices:EnrollementServicesService,){
+              private enrollementServices:EnrollementServicesService,
+              private snackBar: MatSnackBar){
     this.model = [];
 
   }
@@ -78,7 +81,7 @@ export class CourseEnrollemtComponent {
     'Authorization': 'bearer '+this.logginServices.getLoggedInUser()// Replace with your actual token
   });
 
-  console.log(this.logginServices.getLoggedInUser);
+  
   this.profileData$  = this.htttpClient.get<StudentDetailsRequest>('https://localhost:7061/api/Students/GetStudentDetails', { headers });
     console.log(this.profileData$);
     this.profileData$.subscribe(
@@ -96,6 +99,7 @@ export class CourseEnrollemtComponent {
 }
 
 SaveEnrollData(coursCode:string,userID:number){
+  this.rowErrorMessages[coursCode] = "";
   this.enrollementDetails.setValue({
     coursCode: coursCode,
     userID:userID
@@ -103,7 +107,17 @@ SaveEnrollData(coursCode:string,userID:number){
   console.log(this.enrollementDetails);
   this.enrollementServices.addEnrollementDetails(this.enrollementDetails).subscribe(
     (data: any) => {
-      
+      // Handle success if needed
+      this.openSnackBar('Scuccesfully registered to the course','success-snackbar');
+    },
+    (error: any) => {
+      if (error.status === 409) {
+       
+        this.openSnackBar('You have already enrolled to the course','error-snackbar');
+       
+      } else {
+        console.error('An error occurred:', error);
+      }
     }
   );
 }
@@ -119,10 +133,14 @@ UnEnrollForCourses(courseCode: string) {
       (data: StudentDetailsRequest) => {
         console.log('StudentID:', data.studentID);
         this.UnEnrollData(courseCode,data.studentID)
-        
+        this.openSnackBar('Scuccesfully unenrolled from the course','success-snackbar');
       },
       (error) => {
-        console.error('Error fetching profile data:', error);
+        if (error.status === 409) {
+          this.openSnackBar('You are not enrolled to the course','error-snackbar');
+        } else {
+          console.error('An error occurred:', error);
+        }
       }
     );
     return this.profileData$;
@@ -133,12 +151,18 @@ UnEnrollData(coursCode:string,userID:number){
     coursCode: coursCode,
     userID:userID
   });
-  debugger
   console.log(this.enrollementDetails);
   this.enrollementServices.UnEnrollementDetails(this.enrollementDetails).subscribe(
-    (data: any) => {
-      
+    (data: any) => {   
     }
   );
+}
+openSnackBar(message: string, panelClass:string):void {
+  this.snackBar.open(message, 'Close', {
+    duration: 4000, // Adjust duration as needed
+    horizontalPosition:'center',
+    verticalPosition: 'top',
+    panelClass:[panelClass] // Position the snackbar at the top
+  });
 }
 }

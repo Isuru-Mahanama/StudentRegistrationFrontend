@@ -27,7 +27,7 @@ export class TimeTableComponent {
               }
   NavigateToDahsboard() {
     if(this.logginServices.isLoggedIn){
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['userDashboard']);
     }
     if(!this.logginServices.isLoggedIn){
       this.router.navigate(['login']);

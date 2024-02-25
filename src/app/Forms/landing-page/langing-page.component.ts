@@ -11,11 +11,6 @@ export class LangingPageComponent {
   constructor(private logedInServices :LoginServiceService,
               private router:Router){}
   NaviagateToDashboard(){
-    if(this.logedInServices.isLoggedIn){
-   this.router.navigate(['dashboard']);
-   }
-   if(!this.logedInServices.isLoggedIn){
      this.router.navigate(['login']);
-   }
  }
 }

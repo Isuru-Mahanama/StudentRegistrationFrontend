@@ -60,10 +60,13 @@ export class LoginFormComponent {
         if(JSON.parse(response).userType !== undefined && JSON.parse(response).userType === 1){
           this.router.navigate(['dashboard']);
           this.navbarServices.adminNavbar = true;
+          localStorage.setItem('navbar', 'true'); // This will be stored as "true" string in localStorage
         }
         else{
          this.router.navigate(['userDashboard']);
          this.navbarServices.adminNavbar = false;
+         localStorage.setItem('navbar','false');
+
           }
        }
 
@@ -78,10 +81,7 @@ export class LoginFormComponent {
         
       }
       
-    })
-    
-    
-    
+    })   
   }
  
      

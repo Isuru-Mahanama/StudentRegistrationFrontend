@@ -14,7 +14,7 @@ export class LoginServiceService {
   constructor(private http: HttpClient) { }
 
   addLoginDetails(model:LoginDetailsRequest):Observable<any>{
-    
+   
     return this.http.post('https://localhost:7061/api/User/login', model,{responseType: 'text'})
    
   }

@@ -8,10 +8,14 @@ import { NavbarServiceService } from './Category/Services/navbar-service.service
 })
 export class AppComponent {
   title = 'StudentRegistration';
+  
+
   constructor(private navbarServices : NavbarServiceService){
 
   }
-  ShowNavbar(): boolean {
-    return this.navbarServices.adminNavbar;
+  ShowNavbar():any {
+    debugger
+    return  localStorage.getItem('navbar');
+
   }
 }

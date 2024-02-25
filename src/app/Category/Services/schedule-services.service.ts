@@ -9,8 +9,6 @@ import { schedulingIDRequest } from '../models/schedulingID';
 })
 export class ScheduleServicesService {
   
-
- 
   someIntVariable: number = 0;
 
   constructor(private http: HttpClient) { }

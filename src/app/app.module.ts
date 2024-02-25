@@ -23,7 +23,8 @@ import { CourseEnrollemtComponent } from './Forms/course-enrollemt/course-enroll
 import { ReactiveFormsModule } from '@angular/forms';
 import { TimeTableComponent } from './Forms/time-table/time-table.component';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     AllSchedulesComponent,
     AllCoursesComponent,
     CourseEnrollemtComponent,
-    TimeTableComponent
+    TimeTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +52,9 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatDialogModule,
     [NgxMaterialTimepickerModule],
+    BrowserAnimationsModule
     
   ],
   providers: [],
